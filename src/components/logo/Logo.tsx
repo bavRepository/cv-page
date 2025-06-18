@@ -1,19 +1,18 @@
 import styled from 'styled-components'
-import ImgLogo from '../../assets/images/logo1_low.png'
-
+import logoImg from '../../assets/images/logo.png'
 export const Logo = () => {
   return (
-    <a href="#">
-      <LogoImg src={ImgLogo} alt="logo" />
-    </a>
+    <LogoImg href="#">
+      <img src={logoImg} alt="logo" />
+    </LogoImg>
   )
 }
 
-const LogoImg = styled.img.attrs(({ src, alt }) => ({
-  src: src || '',
-  alt: alt || '',
-}))`
-  width: 160px;
-  height: 100px;
-  object-fit: cover;
+const LogoImg = styled.a`
+  display: block;
+  height: 64px;
+  img {
+    width: 160px;
+    object-fit: cover;
+  }
 `
