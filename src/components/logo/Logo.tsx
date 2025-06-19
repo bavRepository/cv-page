@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import logoImg from '../../assets/images/logo.png'
-import { getRandomValue } from '../../utils/MathWork.tsx'
+import { scaleInSkewMixin } from '../mixins/Mixins.tsx'
 
 export const Logo = () => {
   return (
@@ -9,12 +9,6 @@ export const Logo = () => {
     </LogoImg>
   )
 }
-const scaleIn = keyframes`
-    0% { transform: scale(1) rotateX(0) skewX(0);}
-  15% { transform: scale(0.93) rotateX(${getRandomValue(12, 22)}deg) skewX(${getRandomValue(12, 22)}deg);}
-  100% { transform: scale(1); rotateX(0) skewX(0);}
-`
-
 const LogoImg = styled.a.attrs(({ draggable }) => ({
   draggable: draggable || 'false',
 }))`
@@ -24,7 +18,7 @@ const LogoImg = styled.a.attrs(({ draggable }) => ({
   border-radius: 2rem;
   user-select: none;
   &:hover {
-    animation: ${scaleIn} 0.4s ease-out;
+    ${scaleInSkewMixin}
   }
 
   box-shadow:

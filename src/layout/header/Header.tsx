@@ -24,6 +24,7 @@ const StyledHeader = styled.header`
   left: 0;
   top: 0;
   background: #181824;
+  z-index: 20;
 `
 
 const NavBlockWrapper = styled.div`

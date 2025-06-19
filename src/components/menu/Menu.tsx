@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import { addIdToElem } from '../../utils/ElemAddingData.tsx'
 import type { ReactNode } from 'react'
 import { keyframes } from 'styled-components'
-
-const textShadowAnimation = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
+import { scaleInMixin } from '../mixins/Mixins.tsx'
 export const Menu = () => {
   type MenuItemRender = {
     $id?: string
@@ -66,11 +65,8 @@ export const Menu = () => {
     </StyledMenu>
   )
 }
-const scaleIn = keyframes`
-     0% { transform: scale(1); }
-  15% { transform: scale(0.93);}
-  100% { transform: scale(1); }
-`
+
+const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
 const StyledMenu = styled.nav`
   ul {
@@ -88,7 +84,7 @@ const StyledMenu = styled.nav`
       outline: 8px ridge rgba(170, 50, 220, 0.6);
       border-radius: 2rem;
       &:hover {
-        animation: ${scaleIn} 1.2s ease-out;
+        ${scaleInMixin}
       }
     }
   }
@@ -132,7 +128,7 @@ const ListItem = styled.a.attrs(({ href, draggable }) => ({
   line-height: 27px;
   user-select: none;
 
-  text-shadow: ${(props) => (props.$color === '' ? textShadowAnimation : 'none')};
+  text-shadow: ${(props) => (props.$color === '' ? textShadow : 'none')};
   animation-name: ${(props) => {
     switch (props.$animation) {
       case 'flicker':
