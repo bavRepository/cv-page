@@ -21,7 +21,6 @@ export const Header = () => {
 const StyledHeader = styled.header`
   position: fixed;
   width: 100%;
-  min-height: 60px;
   left: 0px;
   top: 0px;
   background: #181824;
@@ -29,8 +28,8 @@ const StyledHeader = styled.header`
 
 const NavBlockWrapper = styled.div`
   display: flex;
-  min-height: 60px;
+  min-height: 100px;
   align-items: center;
-  justify-content: space-between;
   padding: 0 30px;
+  gap: 30px;
 `
