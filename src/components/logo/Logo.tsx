@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import logoImg from '../../assets/images/logo.png'
+import { getRandomValue } from '../../utils/MathWork.tsx'
+
 export const Logo = () => {
   return (
     <LogoImg href="#" draggable={false}>
@@ -9,7 +11,7 @@ export const Logo = () => {
 }
 const scaleIn = keyframes`
     0% { transform: scale(1) rotateX(0) skewX(0);}
-  15% { transform: scale(0.93) rotateX(6deg) skewX(6deg);}
+  15% { transform: scale(0.93) rotateX(${getRandomValue(12, 22)}deg) skewX(${getRandomValue(12, 22)}deg);}
   100% { transform: scale(1); rotateX(0) skewX(0);}
 `
 
