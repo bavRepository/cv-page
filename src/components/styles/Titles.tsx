@@ -7,7 +7,7 @@ type TitleWrapperProps = {
   $color?: string
   $margin?: string
   $padding?: string
-  textAlign?: 'center' | 'left' | 'right'
+  $textAlign?: 'center' | 'left' | 'right'
 }
 
 const Title5278 = styled.h1<TitleWrapperProps>`
@@ -17,7 +17,7 @@ const Title5278 = styled.h1<TitleWrapperProps>`
   color: ${(props) => props.$color || '#fff'}; /*#f5f5f5*/
   margin: ${(props) => props.$margin || '0'};
   padding: ${(props) => props.$padding || '0'};
-  text-align: ${(props) => props.textAlign || 'center'};
+  text-align: ${(props) => props.$textAlign || 'center'};
 `
 
 const SubTitle3248 = styled.h2<TitleWrapperProps>`
@@ -27,7 +27,7 @@ const SubTitle3248 = styled.h2<TitleWrapperProps>`
   color: ${(props) => props.$color || '#fff'};
   margin: ${(props) => props.$margin || '0'};
   padding: ${(props) => props.$padding || '0'};
-  text-align: ${(props) => props.textAlign || 'center'};
+  text-align: ${(props) => props.$textAlign || 'center'};
 `
 
 const Descr1827 = styled.div<TitleWrapperProps>`
@@ -37,7 +37,7 @@ const Descr1827 = styled.div<TitleWrapperProps>`
   margin: ${(props) => props.$margin || '0'};
   padding: ${(props) => props.$padding || '0'};
   font-weight: ${(props) => props.$fontWeight || '500'};
-  text-align: ${(props) => props.textAlign || 'center'};
+  text-align: ${(props) => props.$textAlign || 'center'};
 `
 
 export { Title5278, SubTitle3248, Descr1827 }
