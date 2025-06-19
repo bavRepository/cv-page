@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { addIdToElem } from '../../utils/ElemAddingData.tsx'
 import type { ReactNode } from 'react'
 import { keyframes } from 'styled-components'
+
+const textShadowAnimation = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 export const Menu = () => {
   type MenuItemRender = {
     $id?: string
@@ -102,36 +104,14 @@ const flicker = keyframes`
 `
 
 const blink = keyframes`
-  78% {
-    color: inherit;
-    text-shadow: inherit;
-  }
-  79%{
-    color: #0b3960;
-  }
-  80% {
-    text-shadow: none;
-  }
-  81% {
-    color: inherit;
-    text-shadow: inherit;
-  }
-  82% {
-    color: #0b3960;
-    text-shadow: none;
-  }
-  83% {
-    color: inherit;
-    text-shadow: inherit;
-  }
-  92% {
-    color: #0b3960;
-    text-shadow: none;
-  }
-  92.5% {
-    color: inherit;
-    text-shadow: inherit;
-  }
+  78% {color: inherit;text-shadow: inherit;}
+  79%{color: #0b3960;}
+  80% {text-shadow: none;}
+  81% {color: inherit;text-shadow: inherit;}
+  82% {color: #0b3960;text-shadow: none;}
+  83% {color: inherit;text-shadow: inherit;}
+  92% {color: #0b3960;text-shadow: none;}
+  92.5% {color: inherit;text-shadow: inherit;}
 `
 
 type MenuItemWrapperProps = {
@@ -152,13 +132,7 @@ const ListItem = styled.a.attrs(({ href, draggable }) => ({
   line-height: 27px;
   user-select: none;
 
-  text-shadow:
-    0 -40px 100px,
-    0 0 2px,
-    0 0 1em #bfe2ff,
-    0 0 0.5em #bfe2ff,
-    0 0 0.1em #bfe2ff;
-
+  text-shadow: ${(props) => (props.$color === '' ? textShadowAnimation : 'none')};
   animation-name: ${(props) => {
     switch (props.$animation) {
       case 'flicker':
