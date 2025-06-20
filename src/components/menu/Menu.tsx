@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import { addIdToElem } from '../../utils/ElemAddingData.tsx'
 import type { ReactNode } from 'react'
-import { keyframes } from 'styled-components'
-import { scaleInMixin } from '../mixins/Mixins.tsx'
+import { animationScaleInMixin, animationNeonMixin, animationBlinkMixin } from '../mixins/Mixins.tsx'
 export const Menu = () => {
   type MenuItemRender = {
     $id?: string
@@ -25,34 +24,41 @@ export const Menu = () => {
       $color: '',
       $name: 'About me',
       draggable: false,
-      $animation: 'flicker',
+      $animation: 'neon',
     },
     {
       href: '',
       $color: '',
       $name: 'Projects',
       draggable: false,
-      $animation: 'flicker',
+      $animation: 'neon',
     },
     {
       href: '',
       $color: '',
       $name: 'Contact',
       draggable: false,
-      $animation: 'flicker',
+      $animation: 'neon',
     },
   ]
 
   const renderItem: (arr: MenuItemRender[]) => ReactNode[] = (arr: MenuItemRender[]): ReactNode[] => {
     return arr.map(({ $name, $id, ...elemDataObj }: MenuItemRender) => {
-      const getRandomIndex: number = Math.floor(Math.random() * $name.length)
-      const tmpChar = `<span>${$name[getRandomIndex]}</span>`
-      const $modifiedName = `${$name.slice(0, getRandomIndex)}${tmpChar}${$name.slice(getRandomIndex + 1)}`
-      return (
-        <li key={$id}>
-          <ListItem {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></ListItem>
-        </li>
-      )
+      try {
+        if (!$name) {
+          throw new Error('$name has no length')
+        }
+        const getRandomIndex: number = Math.floor(Math.random() * $name.length)
+        const tmpChar = `<span>${$name[getRandomIndex]}</span>`
+        const $modifiedName = `${$name.slice(0, getRandomIndex)}${tmpChar}${$name.slice(getRandomIndex + 1)}`
+        return (
+          <li key={$id}>
+            <ListItem {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></ListItem>
+          </li>
+        )
+      } catch (error) {
+        console.log(error)
+      }
     })
   }
 
@@ -84,30 +90,10 @@ const StyledMenu = styled.nav`
       outline: 8px ridge rgba(170, 50, 220, 0.6);
       border-radius: 2rem;
       &:hover {
-        ${scaleInMixin}
+        ${animationScaleInMixin}
       }
     }
   }
-`
-
-const flicker = keyframes`
-  from {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(191, 226, 255, 0.52), 0 0 21px rgba(191, 226, 255, 0.92), 0 0 34px rgba(191, 226, 255, 0.78), 0 0 54px rgba(191, 226, 255, 0.92);
-  }
-  to {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(191, 226, 255, 0.58), 0 0 22px rgba(191, 226, 255, 0.84), 0 0 38px rgba(191, 226, 255, 0.88), 0 0 60px #FFF;
-  }
-`
-
-const blink = keyframes`
-  78% {color: inherit;text-shadow: inherit;}
-  79%{color: #0b3960;}
-  80% {text-shadow: none;}
-  81% {color: inherit;text-shadow: inherit;}
-  82% {color: #0b3960;text-shadow: none;}
-  83% {color: inherit;text-shadow: inherit;}
-  92% {color: #0b3960;text-shadow: none;}
-  92.5% {color: inherit;text-shadow: inherit;}
 `
 
 type MenuItemWrapperProps = {
@@ -129,18 +115,14 @@ const ListItem = styled.a.attrs(({ href, draggable }) => ({
   user-select: none;
 
   text-shadow: ${(props) => (props.$color === '' ? textShadow : 'none')};
-  animation-name: ${(props) => {
+  ${(props) => {
     switch (props.$animation) {
-      case 'flicker':
-        return flicker
+      case 'neon':
+        return animationNeonMixin
       default:
         return 'none'
     }
   }};
-  animation-duration: 0.1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
 
   &:hover {
     color: #7562e0;
@@ -149,6 +131,6 @@ const ListItem = styled.a.attrs(({ href, draggable }) => ({
   }
 
   span {
-    animation: ${blink} linear infinite 2s;
+    ${animationBlinkMixin}
   }
 `

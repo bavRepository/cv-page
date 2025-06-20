@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import logoImg from '../../assets/images/logo.png'
-import { scaleInSkewMixin } from '../mixins/Mixins.tsx'
+import { animationScaleInSkewMixin } from '../mixins/Mixins.tsx'
 
 export const Logo = () => {
   return (
@@ -18,7 +18,7 @@ const LogoImg = styled.a.attrs(({ draggable }) => ({
   border-radius: 2rem;
   user-select: none;
   &:hover {
-    ${scaleInSkewMixin}
+    ${animationScaleInSkewMixin}
   }
 
   box-shadow:

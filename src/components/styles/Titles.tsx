@@ -5,32 +5,38 @@ type TitleWrapperProps = {
   $fontSize?: string
   $lineHeight?: string
   $color?: string
+  $width?: string
+  $height?: string
   $margin?: string
   $padding?: string
   $textAlign?: 'center' | 'left' | 'right'
 }
 
-const Title5278 = styled.h1<TitleWrapperProps>`
+const Title = styled.h1<TitleWrapperProps>`
   font-weight: ${(props) => props.$fontWeight || '600'};
   font-size: ${(props) => props.$fontSize || '52px'};
   line-height: ${(props) => props.$lineHeight || '78px'};
-  color: ${(props) => props.$color || '#fff'}; /*#f5f5f5*/
+  color: ${(props) => props.$color || '#fff'};
+  width: ${(props) => props.$width || 'auto'};
+  $height: ${(props) => props.$height || 'auto'};
   margin: ${(props) => props.$margin || '0'};
   padding: ${(props) => props.$padding || '0'};
   text-align: ${(props) => props.$textAlign || 'center'};
 `
 
-const SubTitle3248 = styled.h2<TitleWrapperProps>`
+const SubTitle = styled.h2<TitleWrapperProps>`
   font-weight: ${(props) => props.$fontWeight || '600'};
   font-size: ${(props) => props.$fontSize || '32px'};
   line-height: ${(props) => props.$lineHeight || '48px'};
   color: ${(props) => props.$color || '#fff'};
+  width: ${(props) => props.$width || 'auto'};
+  $height: ${(props) => props.$height || 'auto'};
   margin: ${(props) => props.$margin || '0'};
   padding: ${(props) => props.$padding || '0'};
   text-align: ${(props) => props.$textAlign || 'center'};
 `
 
-const Descr1827 = styled.div<TitleWrapperProps>`
+const Descr = styled.div<TitleWrapperProps>`
   font-size: ${(props) => props.$fontSize || '18px'};
   line-height: ${(props) => props.$lineHeight || '27px'};
   color: ${(props) => props.$color || '#fff'};
@@ -40,4 +46,4 @@ const Descr1827 = styled.div<TitleWrapperProps>`
   text-align: ${(props) => props.$textAlign || 'center'};
 `
 
-export { Title5278, SubTitle3248, Descr1827 }
+export { Title, SubTitle, Descr }

@@ -2,7 +2,7 @@
 import { FaFacebook, FaLinkedin, FaTelegram } from 'react-icons/fa'
 import { PiInstagramLogoFill } from 'react-icons/pi'
 import styled from 'styled-components'
-import { scaleInMixin } from '../mixins/Mixins.tsx'
+import { animationScaleInMixin } from '../mixins/Mixins.tsx'
 export const Social = () => {
   return (
     <SocialWrapper $margin={'20px 0 0 0'} $justifyContent={'center'} $gap={'18px'}>
@@ -57,7 +57,7 @@ const FaceBook = styled(FaFacebook)`
   font-size: 35px;
   cursor: pointer;
   &:hover {
-    ${scaleInMixin};
+    ${animationScaleInMixin};
   }
 `
 
@@ -66,7 +66,7 @@ const Instagram = styled(PiInstagramLogoFill)`
   font-size: 35px;
   cursor: pointer;
   &:hover {
-    ${scaleInMixin};
+    ${animationScaleInMixin};
   }
 `
 
@@ -75,7 +75,7 @@ const LinkedIn = styled(FaLinkedin)`
   font-size: 35px;
   cursor: pointer;
   &:hover {
-    ${scaleInMixin};
+    ${animationScaleInMixin};
   }
 `
 
@@ -84,6 +84,6 @@ const Telegram = styled(FaTelegram)`
   font-size: 35px;
   cursor: pointer;
   &:hover {
-    ${scaleInMixin};
+    ${animationScaleInMixin};
   }
 `

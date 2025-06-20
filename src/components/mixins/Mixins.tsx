@@ -1,6 +1,37 @@
 import { css, keyframes } from 'styled-components'
 import { getRandomValue } from '../../utils/MathWork.tsx'
 
+// neon
+
+const neon = keyframes`
+  from {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(191, 226, 255, 0.52), 0 0 21px rgba(191, 226, 255, 0.92), 0 0 34px rgba(191, 226, 255, 0.78), 0 0 54px rgba(191, 226, 255, 0.92);
+  }
+  to {
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(191, 226, 255, 0.58), 0 0 22px rgba(191, 226, 255, 0.84), 0 0 38px rgba(191, 226, 255, 0.88), 0 0 60px #FFF;
+  }
+`
+const animationNeonMixin = css`
+  animation: ${neon} 0.1s ease-in-out infinite alternate;
+`
+
+// blink
+
+const blinkKeyFrames = keyframes`
+78% {color: inherit;text-shadow: inherit;}
+79%{color: #0b3960;}
+80% {text-shadow: none;}
+81% {color: inherit;text-shadow: inherit;}
+82% {color: #0b3960;text-shadow: none;}
+83% {color: inherit;text-shadow: inherit;}
+92% {color: #0b3960;text-shadow: none;}
+92.5% {color: inherit;text-shadow: inherit;}
+`
+
+const animationBlinkMixin = css`
+  animation: ${blinkKeyFrames} linear infinite 2s;
+`
+
 // scaleInScew
 const scaleInSkewKeyFrames = keyframes`
     0% { transform: scale(1) rotateX(0) skewX(0);}
@@ -8,7 +39,7 @@ const scaleInSkewKeyFrames = keyframes`
   100% { transform: scale(1); rotateX(0) skewX(0);}
 `
 
-const scaleInSkewMixin = css`
+const animationScaleInSkewMixin = css`
   animation: ${scaleInSkewKeyFrames} 0.4s ease-out;
 `
 // scaleIn
@@ -18,8 +49,8 @@ const scaleInKeyFrames = keyframes`
   100% { transform: scale(1); }
 
 `
-const scaleInMixin = css`
+const animationScaleInMixin = css`
   animation: ${scaleInKeyFrames} 1.2s ease-out;
 `
 
-export { scaleInSkewMixin, scaleInMixin }
+export { animationScaleInSkewMixin, animationScaleInMixin, animationBlinkMixin, animationNeonMixin }
