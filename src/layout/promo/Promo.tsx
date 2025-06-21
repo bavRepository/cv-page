@@ -2,7 +2,7 @@ import { Container } from '../../components/common/Container.ts'
 import styled from 'styled-components'
 import bgImg from '../../assets/images/bg-main.jpg'
 import { Social } from '../../components/social/Social.tsx'
-import { SubTitle, Title } from '../../components/common/Title.ts'
+import { Header } from '../../components/common/Title.ts'
 import { Text } from '../../components/common/Text.ts'
 import { ButtonLink } from '../../components/common/Buttons.ts'
 import approvedImg from '../../assets/images/approved.png'
@@ -31,7 +31,7 @@ export const Promo = () => {
   ]
 
   const renderItem: (arr: ButtonItemRender[]) => ReactNode[] = (arr: ButtonItemRender[]): ReactNode[] => {
-    return arr.map(({ $name, $id, ...elemDataObj }: ButtonItemRender) => {
+    return arr.map(({ $name, $id }: ButtonItemRender) => {
       try {
         if (!$name) {
           throw new Error('$name has no length')
@@ -51,7 +51,7 @@ export const Promo = () => {
     <PromoSection>
       <Container>
         <ContentWrapper>
-          <SubTitle>Hello, i’m</SubTitle>
+          <Header>Hello, i’m</Header>
           <Title $color={'#f5f5f5'}>Anton Barai</Title>
           <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
           <Social />
@@ -80,13 +80,13 @@ const ContentWrapper = styled.div`
     margin-top: 110px;
 
     ${ButtonLink} {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
       outline: 4px ridge rgba(170, 50, 220, 0.6);
       border-radius: 2rem;
       background: rgba(24, 24, 36, 0.8);
-      font-size: 16px;
-      line-height: 24px;
       padding: 12px 25px;
-      background: #7562e0;
       text-shadow: ${textShadow};
       text-decoration: none;
 
@@ -110,3 +110,4 @@ const Img = styled.img`
   bottom: 55%;
   z-index: 10;
 `
+const Title = styled.h1``

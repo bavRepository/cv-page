@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 type TextPropsType = {
-  $fontWeight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '900'
+  $fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 900
   $fontSize?: string
   $lineHeight?: string
   $color?: string
-  $width?: string
-  $height?: string
   $margin?: string
   $padding?: string
   $textAlign?: 'center' | 'left' | 'right'
