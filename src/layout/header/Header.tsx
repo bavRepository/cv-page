@@ -3,7 +3,7 @@
 import styled from 'styled-components'
 import { Logo } from '../../components/logo/Logo.tsx'
 import { Menu } from '../../components/menu/Menu.tsx'
-import { Container } from '../container/Container.tsx'
+import { Container } from '../../components/common/Container.ts'
 
 export const Header = () => {
   return (

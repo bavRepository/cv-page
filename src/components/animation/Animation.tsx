@@ -11,7 +11,7 @@ const neon = keyframes`
     text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(191, 226, 255, 0.58), 0 0 22px rgba(191, 226, 255, 0.84), 0 0 38px rgba(191, 226, 255, 0.88), 0 0 60px #FFF;
   }
 `
-const animationNeonMixin = css`
+const animationNeon = css`
   animation: ${neon} 0.1s ease-in-out infinite alternate;
 `
 
@@ -28,18 +28,18 @@ const blinkKeyFrames = keyframes`
 92.5% {color: inherit;text-shadow: inherit;}
 `
 
-const animationBlinkMixin = css`
-  animation: ${blinkKeyFrames} linear infinite 2s;
+const animationBlink = (timer: string | number) => css`
+  animation: ${blinkKeyFrames} linear infinite ${timer}s;
 `
 
-// scaleInScew
+// scaleInSkew
 const scaleInSkewKeyFrames = keyframes`
     0% { transform: scale(1) rotateX(0) skewX(0);}
   15% { transform: scale(0.93) rotateX(${getRandomValue(12, 22)}deg) skewX(${getRandomValue(12, 22)}deg);}
   100% { transform: scale(1); rotateX(0) skewX(0);}
 `
 
-const animationScaleInSkewMixin = css`
+const animationScaleInSkew = css`
   animation: ${scaleInSkewKeyFrames} 0.4s ease-out;
 `
 // scaleIn
@@ -49,8 +49,8 @@ const scaleInKeyFrames = keyframes`
   100% { transform: scale(1); }
 
 `
-const animationScaleInMixin = css`
+const animationScaleIn = css`
   animation: ${scaleInKeyFrames} 1.2s ease-out;
 `
 
-export { animationScaleInSkewMixin, animationScaleInMixin, animationBlinkMixin, animationNeonMixin }
+export { animationScaleInSkew, animationScaleIn, animationBlink, animationNeon }

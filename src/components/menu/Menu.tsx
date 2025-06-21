@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { addIdToElem } from '../../utils/ElemAddingData.tsx'
+import { addIdToElem } from '../../utils/СhangingDataElements.tsx'
 import type { ReactNode } from 'react'
-import { animationScaleInMixin, animationNeonMixin, animationBlinkMixin } from '../mixins/Mixins.tsx'
+import { animationScaleIn, animationNeon, animationBlink } from '../animation/Animation.tsx'
 export const Menu = () => {
   type MenuItemRender = {
     $id?: string
@@ -53,7 +53,7 @@ export const Menu = () => {
         const $modifiedName = `${$name.slice(0, getRandomIndex)}${tmpChar}${$name.slice(getRandomIndex + 1)}`
         return (
           <li key={$id}>
-            <ListItem {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></ListItem>
+            <Link {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></Link>
           </li>
         )
       } catch (error) {
@@ -90,7 +90,7 @@ const StyledMenu = styled.nav`
       outline: 8px ridge rgba(170, 50, 220, 0.6);
       border-radius: 2rem;
       &:hover {
-        ${animationScaleInMixin}
+        ${animationScaleIn}
       }
     }
   }
@@ -101,7 +101,7 @@ type MenuItemWrapperProps = {
   $color?: string
 }
 
-const ListItem = styled.a.attrs(({ href, draggable }) => ({
+const Link = styled.a.attrs(({ href, draggable }) => ({
   href: href || '#',
   draggable: draggable || 'false',
 }))<MenuItemWrapperProps>`
@@ -118,7 +118,7 @@ const ListItem = styled.a.attrs(({ href, draggable }) => ({
   ${(props) => {
     switch (props.$animation) {
       case 'neon':
-        return animationNeonMixin
+        return animationNeon
       default:
         return 'none'
     }
@@ -131,6 +131,5 @@ const ListItem = styled.a.attrs(({ href, draggable }) => ({
   }
 
   span {
-    ${animationBlinkMixin}
-  }
+  ${animationBlink(3.3)};
 `

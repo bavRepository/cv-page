@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 import logoImg from '../../assets/images/logo.png'
-import { animationScaleInSkewMixin } from '../mixins/Mixins.tsx'
+import { animationScaleInSkew } from '../animation/Animation.tsx'
 
 export const Logo = () => {
   return (
-    <LogoImg href="#" draggable={false}>
+    <LogoLink href="#" draggable={false}>
       <img src={logoImg} alt="logo" draggable={false} />
-    </LogoImg>
+    </LogoLink>
   )
 }
-const LogoImg = styled.a.attrs(({ draggable }) => ({
+const LogoLink = styled.a.attrs(({ draggable }) => ({
   draggable: draggable || 'false',
 }))`
   display: block;
@@ -18,7 +18,7 @@ const LogoImg = styled.a.attrs(({ draggable }) => ({
   border-radius: 2rem;
   user-select: none;
   &:hover {
-    ${animationScaleInSkewMixin}
+    ${animationScaleInSkew}
   }
 
   box-shadow:
