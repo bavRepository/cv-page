@@ -52,13 +52,11 @@ export const Promo = () => {
       <Container>
         <ContentWrapper>
           <Header>Hello, i’m</Header>
-          <Title $color={'#f5f5f5'}>Anton Barai</Title>
+          <Title>Anton Barai</Title>
           <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
           <Social />
           <Img src={approvedImg} alt="approved" />
-          <FlexWrapper $justify={'center'} $wrap={'wrap'} $gap={'30px'}>
-            {btnElementsHtml}
-          </FlexWrapper>
+          <ButtonLinkWrapper>{btnElementsHtml}</ButtonLinkWrapper>
         </ContentWrapper>
       </Container>
     </PromoSection>
@@ -77,30 +75,7 @@ const ContentWrapper = styled.div`
   position: relative;
 
   ${FlexWrapper} {
-    margin-top: 110px;
-
-    ${ButtonLink} {
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 600;
-      outline: 4px ridge rgba(170, 50, 220, 0.6);
-      border-radius: 2rem;
-      background: rgba(24, 24, 36, 0.8);
-      padding: 12px 25px;
-      text-shadow: ${textShadow};
-      text-decoration: none;
-
-      ${animationNeon}
-      &:hover {
-        ${animationScaleIn};
-        color: #7562e0;
-        text-shadow: none;
-      }
-
-      span {
-        ${animationBlink(2)}
-      }
-    }
+    margin-top: 30px;
   }
 `
 const Img = styled.img`
@@ -110,4 +85,41 @@ const Img = styled.img`
   bottom: 55%;
   z-index: 10;
 `
-const Title = styled.h1``
+const Title = styled.h1`
+  color: #f5f5f5;
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 78px;
+  text-align: center;
+  margin: 0;
+`
+
+const ButtonLinkWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 30px;
+  ${ButtonLink} {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    outline: 4px ridge rgba(170, 50, 220, 0.6);
+    border-radius: 2rem;
+    background: rgba(24, 24, 36, 0.8);
+    padding: 12px 25px;
+    text-shadow: ${textShadow};
+    text-decoration: none;
+
+    ${animationNeon}
+    &:hover {
+      ${animationScaleIn};
+      color: #7562e0;
+      text-shadow: none;
+    }
+
+    span {
+      ${animationBlink(2)}
+    }
+  }
+`
