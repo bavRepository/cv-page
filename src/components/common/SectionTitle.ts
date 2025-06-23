@@ -12,7 +12,7 @@ type TitleWrapperProps = {
   $textAlign?: 'center' | 'left' | 'right'
 }
 
-const HeaderContent = styled.h2<TitleWrapperProps>`
+export const SectionTitle = styled.h2<TitleWrapperProps>`
   font-weight: ${(props) => props.$fontWeight || '600'};
   font-size: ${(props) => props.$fontSize || '32px'};
   line-height: ${(props) => props.$lineHeight || '48px'};
@@ -23,17 +23,3 @@ const HeaderContent = styled.h2<TitleWrapperProps>`
   padding: ${(props) => props.$padding || '0'};
   text-align: ${(props) => props.$textAlign || 'center'};
 `
-
-const SubHeaderContent = styled.h3<TitleWrapperProps>`
-  font-weight: ${(props) => props.$fontWeight || '600'};
-  font-size: ${(props) => props.$fontSize || '32px'};
-  line-height: ${(props) => props.$lineHeight || '48px'};
-  color: ${(props) => props.$color || '#fff'};
-  width: ${(props) => props.$width || 'auto'};
-  $height: ${(props) => props.$height || 'auto'};
-  margin: ${(props) => props.$margin || '0'};
-  padding: ${(props) => props.$padding || '0'};
-  text-align: ${(props) => props.$textAlign || 'center'};
-`
-
-export { HeaderContent, SubHeaderContent }

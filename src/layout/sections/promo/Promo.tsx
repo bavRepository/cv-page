@@ -1,15 +1,15 @@
-import { Container } from '../../components/common/Container.ts'
+import { Container } from '../../../components/common/Container.ts'
 import styled from 'styled-components'
-import bgImg from '../../assets/images/bg-main.jpg'
-import { Social } from '../../components/social/Social.tsx'
-import { HeaderContent } from '../../components/common/Title.ts'
-import { Text } from '../../components/common/Text.ts'
-import { ButtonLink } from '../../components/common/Buttons.ts'
-import approvedImg from '../../assets/images/approved.png'
+import bgImg from '../../../assets/images/bg-main.jpg'
+import { Social } from '../../../components/social/Social.tsx'
+import { SectionTitle } from '../../../components/common/SectionTitle.ts'
+import { Text } from '../../../components/common/Text.ts'
+import { ButtonLink } from '../../../components/common/Buttons.ts'
+import approvedImg from '../../../assets/images/approved.png'
 import type { ReactNode } from 'react'
-import { addIdToElem, getModifyStrWithRandomSpan } from '../../utils/СhangingDataElements.tsx'
-import { animationBlink, animationNeon, animationScaleIn } from '../../components/animation/Animation.tsx'
-import { FlexWrapper } from '../../components/common/FlexWrapper.ts'
+import { addIdToElem, getModifyStrWithRandomSpan } from '../../../utils/СhangingDataElements.tsx'
+import { animationBlink, animationNeon, animationScaleIn } from '../../../components/animation/Animation.tsx'
+import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
@@ -51,7 +51,7 @@ export const Promo = () => {
     <PromoSection>
       <Container>
         <ContentWrapper>
-          <HeaderContent>Hello, i’m</HeaderContent>
+          <SectionTitle>Hello, i’m</SectionTitle>
           <Title>Anton Barai</Title>
           <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
           <Social />
