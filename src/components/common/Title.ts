@@ -12,7 +12,7 @@ type TitleWrapperProps = {
   $textAlign?: 'center' | 'left' | 'right'
 }
 
-const Header = styled.h2<TitleWrapperProps>`
+const HeaderContent = styled.h2<TitleWrapperProps>`
   font-weight: ${(props) => props.$fontWeight || '600'};
   font-size: ${(props) => props.$fontSize || '32px'};
   line-height: ${(props) => props.$lineHeight || '48px'};
@@ -24,7 +24,7 @@ const Header = styled.h2<TitleWrapperProps>`
   text-align: ${(props) => props.$textAlign || 'center'};
 `
 
-const SubHeader = styled.h3<TitleWrapperProps>`
+const SubHeaderContent = styled.h3<TitleWrapperProps>`
   font-weight: ${(props) => props.$fontWeight || '600'};
   font-size: ${(props) => props.$fontSize || '32px'};
   line-height: ${(props) => props.$lineHeight || '48px'};
@@ -36,4 +36,4 @@ const SubHeader = styled.h3<TitleWrapperProps>`
   text-align: ${(props) => props.$textAlign || 'center'};
 `
 
-export { Header, SubHeader }
+export { HeaderContent, SubHeaderContent }

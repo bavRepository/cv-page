@@ -14,10 +14,10 @@ export const Menu = () => {
   const menuItemsDataNoId: MenuItemRender[] = [
     {
       href: '',
-      $color: '#7562E0',
+      $color: '',
       $name: 'Home',
       draggable: false,
-      $animation: 'none',
+      $animation: 'neon',
     },
     {
       href: '',

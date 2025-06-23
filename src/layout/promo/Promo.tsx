@@ -2,7 +2,7 @@ import { Container } from '../../components/common/Container.ts'
 import styled from 'styled-components'
 import bgImg from '../../assets/images/bg-main.jpg'
 import { Social } from '../../components/social/Social.tsx'
-import { Header } from '../../components/common/Title.ts'
+import { HeaderContent } from '../../components/common/Title.ts'
 import { Text } from '../../components/common/Text.ts'
 import { ButtonLink } from '../../components/common/Buttons.ts'
 import approvedImg from '../../assets/images/approved.png'
@@ -51,7 +51,7 @@ export const Promo = () => {
     <PromoSection>
       <Container>
         <ContentWrapper>
-          <Header>Hello, i’m</Header>
+          <HeaderContent>Hello, i’m</HeaderContent>
           <Title>Anton Barai</Title>
           <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
           <Social />
