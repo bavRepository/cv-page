@@ -25,7 +25,9 @@ export const Contacts = () => {
               <input type="text" placeholder={'Name:'} name={'name'} />
               <input type="email" placeholder={'Email:'} name={'email'} />
               <textarea placeholder={'Message:'} name={'message'} />
-              <Button $type={'submit'}></Button>
+              <Button $type={'submit'} $width={'174px'} $height={'50px'} $fontSize={'16px'} $fontWeight={500}>
+                Send
+              </Button>
             </ContactForm>
           </RightContentWrapper>
         </ContactsGridWrapper>
@@ -60,6 +62,13 @@ const ContactForm = styled.form`
   }
   textarea {
     height: 80px;
+  }
+  ${Button} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7562e0;
+    border-radius: 8px;
   }
 `
 const LeftContentWrapper = styled.div`
