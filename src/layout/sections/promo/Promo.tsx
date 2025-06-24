@@ -4,7 +4,7 @@ import bgImg from '../../../assets/images/bg-main.jpg'
 import { Social } from '../../../components/social/Social.tsx'
 import { SectionTitle } from '../../../components/common/SectionTitle.ts'
 import { Text } from '../../../components/common/Text.ts'
-import { ButtonLink } from '../../../components/common/Buttons.ts'
+import { ButtonLink } from '../../../components/common/Button.ts'
 import approvedImg from '../../../assets/images/approved.png'
 import type { ReactNode } from 'react'
 import { addIdToElem, getModifyStrWithRandomSpan } from '../../../utils/СhangingDataElements.tsx'
@@ -54,20 +54,31 @@ export const Promo = () => {
           <SectionTitle>Hello, i’m</SectionTitle>
           <Title>Anton Barai</Title>
           <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
-          <Social />
+          <Social justify={'center'} />
           <Img src={approvedImg} alt="approved" />
           <ButtonLinkWrapper>{btnElementsHtml}</ButtonLinkWrapper>
         </ContentWrapper>
       </Container>
+      <BottomOpacity />
     </PromoSection>
   )
 }
+const BottomOpacity = styled.div`
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+`
 
 const PromoSection = styled.section`
+  position: relative;
   display: block;
   min-height: 800px;
   background: url(${bgImg}) center center / cover no-repeat;
-  margin-top: 64px;
+  padding-top: 100px;
+  box-shadow: 0 4px 65px rgba(117, 98, 224, 0.2);
 `
 const ContentWrapper = styled.div`
   padding: 150px 30px 0 30px;
@@ -110,7 +121,7 @@ const ButtonLinkWrapper = styled.div`
     padding: 12px 25px;
     text-shadow: ${textShadow};
     text-decoration: none;
-
+    transition: all 0.2s;
     ${animationNeon}
     &:hover {
       ${animationScaleIn};

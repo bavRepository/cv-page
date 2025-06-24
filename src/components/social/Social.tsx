@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import { animationScaleIn } from '../animation/Animation.tsx'
 import { FlexWrapper } from '../common/FlexWrapper.ts'
 
-export const Social = () => {
+export const Social = ({ margin, justify }: { margin?: string; justify?: string }) => {
   return (
-    <SocialElementContainer>
-      <FlexWrapper $justify={'center'} $gap={'18px'}>
+    <SocialElementContainer $margin={margin}>
+      <FlexWrapper $justify={justify} $gap={'18px'}>
         <SocialIconContainer>
           <FaceBook />
         </SocialIconContainer>
@@ -43,7 +43,8 @@ const SocialIconContainer = styled.div<IconWrapperProps>`
   }
 `
 
-const SocialElementContainer = styled.div`
+const SocialElementContainer = styled.div<{ $margin?: string }>`
+  margin: ${(props) => props.$margin || '0'};
   ${FlexWrapper} {
     margin-top: 20px;
   }

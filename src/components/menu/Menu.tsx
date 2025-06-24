@@ -66,7 +66,7 @@ export const Menu = () => {
   const menuElementsHtml: ReactNode[] = renderItem(menuItemsDataWithId)
 
   return (
-    <StyledMenu>
+    <StyledMenu role="tablist">
       <ul>{menuElementsHtml}</ul>
     </StyledMenu>
   )
@@ -75,15 +75,17 @@ export const Menu = () => {
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
 const StyledMenu = styled.nav`
+  padding-left: 50px;
   ul {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 50px;
     list-style: none;
     padding-left: 0;
-    justify-content: center;
+    justify-content: flex-start;
     li {
+      transition: all 0.2s;
       box-shadow:
         2px 2px 26px rgba(255, 255, 255, 0.2),
         -2px -2px 26px rgba(255, 255, 255, 0.2);
@@ -107,6 +109,7 @@ const Link = styled.a.attrs(({ href, draggable }) => ({
 }))<MenuItemWrapperProps>`
   color: ${(props) => props.$color || '#fff'};
   text-decoration: none;
+  transition: all 0.2s;
   display: block;
   padding: 5px 15px;
   font-weight: 600;
@@ -123,7 +126,7 @@ const Link = styled.a.attrs(({ href, draggable }) => ({
         return 'none'
     }
   }};
-
+    
   &:hover {
     color: #7562e0;
     text-shadow: none;

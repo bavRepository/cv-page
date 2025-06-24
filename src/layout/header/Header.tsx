@@ -29,8 +29,10 @@ const StyledHeader = styled.header`
 
 const NavBlockWrapper = styled.div`
   display: flex;
-  min-height: 100px;
+  width: 100%;
   align-items: center;
-  padding: 0 30px;
+  justify-content: center;
+  padding: 30px;
   gap: 30px;
+  flex-wrap: wrap;
 `

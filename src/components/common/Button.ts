@@ -15,11 +15,10 @@ type ButtonWrapperProps = {
 }
 
 type ButtonAttr = {
-  $disable?: boolean
+  disabled?: boolean
   $type?: 'button' | 'submit' | 'reset'
   $name?: string
   $value?: string
-  $draggable?: boolean
 }
 
 type ButtonAttrLink = {
@@ -30,12 +29,11 @@ type ButtonAttrLink = {
   $draggable?: boolean
 }
 
-const Button = styled.button.attrs<ButtonAttr>(({ $disable, $value, $type, $name, $draggable }) => ({
-  disable: $disable || false,
+const Button = styled.button.attrs<ButtonAttr>(({ $disable, $value, $type, $name }) => ({
+  disabled: $disable || false,
   value: $value || '',
   name: $name || '',
   type: $type || 'button',
-  draggable: $draggable || false,
 }))<ButtonWrapperProps>`
   width: ${(props) => props.$width || 'auto'};
   height: ${(props) => props.$height || 'auto'};
@@ -52,7 +50,7 @@ const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $value, $name, $drag
   href: $href || '#',
   value: $value || '',
   name: $name || '',
-  draggable: $draggable || 'false',
+  draggable: $draggable || false,
 }))<ButtonWrapperProps>`
   width: ${(props) => props.$width || 'auto'};
   height: ${(props) => props.$height || 'auto'};

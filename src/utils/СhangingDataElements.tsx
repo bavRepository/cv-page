@@ -1,18 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
+import type { ItemListType } from '../layout/sections/offer/Offers.tsx'
 
-type MenuItemRender = {
-  $id?: string
-  href?: string
-  $color?: string
-  $name: string
-  draggable?: boolean
-  $animation?: string
-}
-
-const addIdToElem: (elements: MenuItemRender[]) => MenuItemRender[] = (
-  elements: MenuItemRender[],
-): MenuItemRender[] => {
-  return elements.map((elem: MenuItemRender): MenuItemRender => {
+const addIdToElem = (elements: object[]): ItemListType[] => {
+  return elements.map((elem) => {
     return { ...elem, $id: uuidv4() }
   })
 }

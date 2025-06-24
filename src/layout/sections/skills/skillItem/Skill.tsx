@@ -5,17 +5,14 @@ type ItemListType = {
   $width?: string
   $height?: string
   $viewBox?: string
+  $text?: string
 }
-export const Skill = (props: ItemListType) => {
+export const Skill = ({ $text, ...props }: ItemListType) => {
   return (
     <SkillWrapper>
-      <Icon {...props}></Icon>
+      <Icon {...props} />
       <DescriptionWrapper>
-        <h3>
-          UI & UX
-          <br />
-          DESIGNING
-        </h3>
+        <h3>{$text}</h3>
       </DescriptionWrapper>
     </SkillWrapper>
   )
@@ -23,11 +20,14 @@ export const Skill = (props: ItemListType) => {
 
 const SkillWrapper = styled.div`
   box-sizing: border-box;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  max-width: 256px;
-  max-height: 254px;
+  box-shadow: 5px 5px 35px rgba(117, 98, 224, 0.3);
+  max-width: 246px;
+  height: 244px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
   background: #bdbdbd;
-  padding: 97px 24px 24px 24px;
+  padding: 0 24px 24px 24px;
   flex-grow: 1;
   transition: all 0.3s;
   &:hover {
