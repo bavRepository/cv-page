@@ -24,7 +24,6 @@ export const Offer = ({ $text, $header, ...props }: ItemListType) => {
 
 const OfferWrapper = styled.div`
   margin-top: 24px;
-  box-sizing: border-box;
   box-shadow: 5px 5px 35px rgba(117, 98, 224, 0.3);
   max-width: 324px;
   height: 338px;

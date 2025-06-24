@@ -50,7 +50,6 @@ const Img = styled.img`
 `
 
 const ProjectWrapper = styled.div`
-  box-sizing: border-box;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background: #31313f;
   max-width: 100%;

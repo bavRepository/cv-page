@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { SectionTitle } from '../../../components/common/SectionTitle.ts'
-import { Container } from '../../../components/common/Container.ts'
-import { Text } from '../../../components/common/Text.ts'
-import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
-import { Skill } from './skillItem/Skill.tsx'
+import { SectionTitle } from '../../components/common/SectionTitle.ts'
+import { Container } from '../../components/common/Container.ts'
+import { Text } from '../../components/common/Text.ts'
+import { FlexWrapper } from '../../components/common/FlexWrapper.ts'
+import { Skill } from '../sections/skills/Skill.tsx'
 import { type ReactNode } from 'react'
-import { addIdToElem } from '../../../utils/СhangingDataElements.tsx'
-export const Skills = () => {
+import { addIdToElem } from '../../utils/СhangingDataElements.tsx'
+export const Main = () => {
   type ItemListType = {
     $iconId: string
     $width?: string
@@ -57,7 +57,7 @@ export const Skills = () => {
   const skillElementsHtml: ReactNode[] = renderList(offerItemsDataWithId)
 
   return (
-    <SectionSkills>
+    <SectionMain>
       <Container>
         <SectionTitle $fontSize={'32px'} $color={'#7562e0'} $textAlign={'left'}>
           About me:
@@ -81,11 +81,11 @@ export const Skills = () => {
           {skillElementsHtml}
         </FlexWrapper>
       </Container>
-    </SectionSkills>
+    </SectionMain>
   )
 }
 
-const SectionSkills = styled.main`
+const SectionMain = styled.main`
   min-height: 600px;
   background: #1a1a29;
   padding: 85px 0 0 0;

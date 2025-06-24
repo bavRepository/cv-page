@@ -1,4 +1,4 @@
-import { Icon } from '../../../../components/icon/Icon.tsx'
+import { Icon } from '../../../components/icon/Icon.tsx'
 import styled from 'styled-components'
 type ItemListType = {
   $iconId: string
@@ -19,7 +19,6 @@ export const Skill = ({ $text, ...props }: ItemListType) => {
 }
 
 const SkillWrapper = styled.div`
-  box-sizing: border-box;
   box-shadow: 5px 5px 35px rgba(117, 98, 224, 0.3);
   max-width: 246px;
   height: 244px;
