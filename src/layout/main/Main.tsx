@@ -3,58 +3,65 @@ import { SectionTitle } from '../../components/common/SectionTitle.ts'
 import { Container } from '../../components/common/Container.ts'
 import { Text } from '../../components/common/Text.ts'
 import { FlexWrapper } from '../../components/common/FlexWrapper.ts'
-import { Skill } from '../sections/skills/Skill.tsx'
+import { Skill } from '../../components/skill/Skill.tsx'
 import { type ReactNode } from 'react'
-import { addIdToElem } from '../../utils/СhangingDataElements.tsx'
+import { getRndIdValue } from '../../utils/MathWork.tsx'
+
+export type ItemListTypeSkill = {
+  $iconId: string
+  $width?: string
+  $height?: string
+  $viewBox?: string
+  $text?: string
+  $id?: string
+}
+const skillList: ItemListTypeSkill[] = [
+  {
+    $iconId: 'rulerPan',
+    $width: '42',
+    $height: '42',
+    $viewBox: '0 0 42 42',
+    $text: 'UI & UX\n' + 'DESIGNING',
+  },
+  {
+    $iconId: 'code',
+    $width: '52',
+    $height: '52',
+    $viewBox: '0 0 52 52',
+    $text: 'WEB\n' + 'DEVELOPMENT',
+  },
+  {
+    $iconId: 'android',
+    $width: '62',
+    $height: '62',
+    $viewBox: '0 0 62 62',
+    $text: 'MOBILE\n' + 'DEVELOPMENT',
+  },
+  {
+    $iconId: 'python',
+    $width: '55',
+    $height: '55',
+    $viewBox: '0 0 55 55',
+    $text: 'WEB SCRAPING\n' + 'WITH PYTHON',
+  },
+]
+
 export const Main = () => {
-  type ItemListType = {
-    $iconId: string
-    $width?: string
-    $height?: string
-    $viewBox?: string
-    $text?: string
-    $id?: string
-  }
-
-  const skillList: ItemListType[] = [
-    {
-      $iconId: 'rulerPan',
-      $width: '42',
-      $height: '42',
-      $viewBox: '0 0 42 42',
-      $text: 'UI & UX\n' + 'DESIGNING',
-    },
-    {
-      $iconId: 'code',
-      $width: '52',
-      $height: '52',
-      $viewBox: '0 0 52 52',
-      $text: 'WEB\n' + 'DEVELOPMENT',
-    },
-    {
-      $iconId: 'android',
-      $width: '62',
-      $height: '62',
-      $viewBox: '0 0 62 62',
-      $text: 'MOBILE\n' + 'DEVELOPMENT',
-    },
-    {
-      $iconId: 'python',
-      $width: '55',
-      $height: '55',
-      $viewBox: '0 0 55 55',
-      $text: 'WEB SCRAPING\n' + 'WITH PYTHON',
-    },
-  ]
-
-  const renderList: (arr: ItemListType[]) => ReactNode[] = (arr: ItemListType[]): ReactNode[] => {
-    return arr.map(({ $id, ...item }: ItemListType): ReactNode => {
+  const renderList: (arr: ItemListTypeSkill[]) => ReactNode[] = (arr: ItemListTypeSkill[]): ReactNode[] => {
+    return arr.map(({ $id, ...item }: ItemListTypeSkill): ReactNode => {
       return <Skill key={$id} {...item} />
     })
   }
 
-  const offerItemsDataWithId = addIdToElem(skillList)
-  const skillElementsHtml: ReactNode[] = renderList(offerItemsDataWithId)
+  const addIdToElem: (elements: ItemListTypeSkill[]) => ItemListTypeSkill[] = (elements) => {
+    return elements.map((elem) => {
+      const strId = getRndIdValue()
+      return { ...elem, $id: strId }
+    })
+  }
+
+  const skillItemsDataWithId = addIdToElem(skillList)
+  const skillElementsHtml: ReactNode[] = renderList(skillItemsDataWithId)
 
   return (
     <SectionMain>

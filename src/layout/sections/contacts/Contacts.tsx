@@ -17,7 +17,7 @@ export const Contacts = () => {
               Connect with me:
             </SectionTitle>
             <Text $textAlign={'left'}>Any convenient way for you</Text>
-            <Social margin={'16px 0 0 0'} justify={'left'} />
+            <Social color={'#7562E0'} margin={'16px 0 0 0'} justify={'left'} />
           </LeftContentWrapper>
           <RightContentWrapper>
             <SectionTitle $fontWeight={500} $fontSize={'24px'} $color={'#fff'} $textAlign={'left'} $lineHeight={'40px'}>
@@ -27,14 +27,14 @@ export const Contacts = () => {
               <input type="text" placeholder={'Name:'} name={'name'} />
               <input type="email" placeholder={'Email:'} name={'email'} />
               <textarea placeholder={'Message:'} name={'message'} />
-              <Button $type={'submit'} $width={'174px'} $height={'50px'} $fontSize={'16px'} $fontWeight={500}>
-                Send
-              </Button>
-              <FlexWrapper>
+              <FlexWrapper $justify={'flex-end'}>
                 <input type="checkbox" />
                 <Text>&nbsp; I have read and agree to the&nbsp;</Text>
                 <ButtonLink>Privacy Policy</ButtonLink>
               </FlexWrapper>
+              <Button $type={'submit'} $width={'140px'} $height={'44px'} $fontSize={'16px'} $fontWeight={500}>
+                Send
+              </Button>
             </ContactForm>
           </RightContentWrapper>
         </ContactsGridWrapper>
@@ -73,6 +73,7 @@ const ContactForm = styled.form`
     resize: none;
   }
   ${Button} {
+    align-self: flex-end;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,32 +85,36 @@ const ContactForm = styled.form`
       background: #7562e0;
     }
   }
+  ${FlexWrapper} {
+    color: rgba(255, 255, 255, 0.8);
+    input[type='checkbox'] {
+      transform: scale(1.2);
+    }
+    ${Text} {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    ${ButtonLink} {
+      display: block;
+      align-self: flex-end;
+      box-shadow: 5px 5px 35px rgba(117, 98, 224, 0.3) inset;
+      padding: 3px 3px;
+      border-radius: 4px;
+      background-color: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      transition: all 0.3s;
+
+      &:hover {
+        ${animationScaleIn};
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(117, 98, 224, 0.9);
+      }
+    }
+  }
 `
 const LeftContentWrapper = styled.div`
   ${Text} {
     margin-top: 16px;
   }
 `
-const RightContentWrapper = styled.div`
-  ${FlexWrapper} {
-    color: rgba(255, 255, 255, 0.8);
-    input[type='checkbox'] {
-      transform: scale(1.2);
-    }
-
-    ${ButtonLink} {
-      display: block;
-      box-shadow: 5px 5px 35px rgba(117, 98, 224, 0.3) inset;
-      padding: 4px 4px;
-      border-radius: 4px;
-      background-color: transparent;
-      color: #7562e0;
-      transition: all 0.3s;
-      &:hover {
-        transform: scale(1.2) translateX(10%) translateY(-10%);
-        cursor: pointer;
-        color: rgba(255, 255, 255, 0.8);
-      }
-    }
-  }
-`
+const RightContentWrapper = styled.div``

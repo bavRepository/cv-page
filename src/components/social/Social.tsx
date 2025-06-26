@@ -4,23 +4,23 @@ import styled from 'styled-components'
 import { animationScaleIn } from '../animation/Animation.tsx'
 import { FlexWrapper } from '../common/FlexWrapper.ts'
 
-export const Social = ({ margin, justify }: { margin?: string; justify?: string }) => {
+export const Social = ({ margin, justify, color }: { margin?: string; justify?: string; color?: string }) => {
   return (
     <SocialElementContainer $margin={margin}>
       <FlexWrapper $justify={justify} $gap={'18px'}>
-        <SocialIconContainer>
+        <SocialIconContainer $color={color}>
           <FaceBook />
         </SocialIconContainer>
 
-        <SocialIconContainer>
+        <SocialIconContainer $color={color}>
           <Instagram />
         </SocialIconContainer>
 
-        <SocialIconContainer>
+        <SocialIconContainer $color={color}>
           <LinkedIn />
         </SocialIconContainer>
 
-        <SocialIconContainer>
+        <SocialIconContainer $color={color}>
           <Telegram />
         </SocialIconContainer>
       </FlexWrapper>
@@ -43,7 +43,7 @@ const SocialIconContainer = styled.div<IconWrapperProps>`
   }
 `
 
-const SocialElementContainer = styled.div<{ $margin?: string }>`
+const SocialElementContainer = styled.div<{ $margin?: string; $color?: string }>`
   margin: ${(props) => props.$margin || '0'};
   ${FlexWrapper} {
     margin-top: 20px;

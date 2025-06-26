@@ -1,46 +1,43 @@
 import styled from 'styled-components'
-import { addIdToElem } from '../../utils/СhangingDataElements.tsx'
+import { getRndIdValue } from '../../utils/MathWork.tsx'
 import type { ReactNode } from 'react'
 import { animationScaleIn, animationNeon, animationBlink } from '../animation/Animation.tsx'
+import { ButtonLink } from '../common/Button.ts'
+
+type MenuItemRender = {
+  $id?: string
+  href?: string
+  $color?: string
+  $name: string
+  draggable?: boolean
+  $animation?: string
+}
+const menuItemsDataNoId: MenuItemRender[] = [
+  {
+    href: '',
+    $name: 'Home',
+  },
+  {
+    href: '',
+    $name: 'About me',
+  },
+  {
+    href: '',
+    $name: 'Projects',
+  },
+  {
+    href: '',
+    $name: 'Contact',
+  },
+]
+
 export const Menu = () => {
-  type MenuItemRender = {
-    $id?: string
-    href?: string
-    $color?: string
-    $name: string
-    draggable?: boolean
-    $animation?: string
+  const addIdToElem: (elements: MenuItemRender[]) => MenuItemRender[] = (elements) => {
+    return elements.map((elem) => {
+      const strId = getRndIdValue()
+      return { ...elem, $id: strId }
+    })
   }
-  const menuItemsDataNoId: MenuItemRender[] = [
-    {
-      href: '',
-      $color: '',
-      $name: 'Home',
-      draggable: false,
-      $animation: 'neon',
-    },
-    {
-      href: '',
-      $color: '',
-      $name: 'About me',
-      draggable: false,
-      $animation: 'neon',
-    },
-    {
-      href: '',
-      $color: '',
-      $name: 'Projects',
-      draggable: false,
-      $animation: 'neon',
-    },
-    {
-      href: '',
-      $color: '',
-      $name: 'Contact',
-      draggable: false,
-      $animation: 'neon',
-    },
-  ]
 
   const renderItem: (arr: MenuItemRender[]) => ReactNode[] = (arr: MenuItemRender[]): ReactNode[] => {
     return arr.map(({ $name, $id, ...elemDataObj }: MenuItemRender) => {
@@ -53,7 +50,7 @@ export const Menu = () => {
         const $modifiedName = `${$name.slice(0, getRandomIndex)}${tmpChar}${$name.slice(getRandomIndex + 1)}`
         return (
           <li key={$id}>
-            <Link {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></Link>
+            <ButtonLink {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></ButtonLink>
           </li>
         )
       } catch (error) {
@@ -72,8 +69,6 @@ export const Menu = () => {
   )
 }
 
-const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
-
 const StyledMenu = styled.nav`
   padding-left: 50px;
   ul {
@@ -89,50 +84,38 @@ const StyledMenu = styled.nav`
       box-shadow:
         2px 2px 26px rgba(255, 255, 255, 0.2),
         -2px -2px 26px rgba(255, 255, 255, 0.2);
-      outline: 8px ridge rgba(170, 50, 220, 0.6);
-      border-radius: 2rem;
       &:hover {
         ${animationScaleIn}
       }
     }
   }
-`
-
-type MenuItemWrapperProps = {
-  $animation?: string
-  $color?: string
-}
-
-const Link = styled.a.attrs(({ href, draggable }) => ({
-  href: href || '#',
-  draggable: draggable || 'false',
-}))<MenuItemWrapperProps>`
-  color: ${(props) => props.$color || '#fff'};
-  text-decoration: none;
-  transition: all 0.2s;
-  display: block;
-  padding: 5px 15px;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 27px;
-  user-select: none;
-
-  text-shadow: ${(props) => (props.$color === '' ? textShadow : 'none')};
-  ${(props) => {
-    switch (props.$animation) {
-      case 'neon':
-        return animationNeon
-      default:
-        return 'none'
+  ${ButtonLink} {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: block;
+    padding: 5px 15px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    user-select: none;
+    text-shadow:
+      0 -40px 100px,
+      0 0 2px,
+      0 0 1em #bfe2ff,
+      0 0 0.5em #bfe2ff,
+      0 0 0.1em #bfe2ff;
+    animation: ${animationNeon};
+    outline: 8px ridge rgba(170, 50, 220, 0.6);
+    border-radius: 2rem;
+    &:hover {
+      text-shadow: none;
+      animation-name: none;
+      color: #7562e0;
     }
-  }};
-    
-  &:hover {
-    color: #7562e0;
-    text-shadow: none;
-    animation-name: none;
-  }
 
-  span {
-  ${animationBlink(3.3)};
+    span {
+      ${animationBlink(3.3)};
+    }
+  }
 `

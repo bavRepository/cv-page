@@ -7,28 +7,36 @@ import { Text } from '../../../components/common/Text.ts'
 import { ButtonLink } from '../../../components/common/Button.ts'
 import approvedImg from '../../../assets/images/approved.png'
 import type { ReactNode } from 'react'
-import { addIdToElem, getModifyStrWithRandomSpan } from '../../../utils/СhangingDataElements.tsx'
+import { getModifyStrWithRandomSpan } from '../../../utils/СhangingDataElements.tsx'
 import { animationBlink, animationNeon, animationScaleIn } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
+import { getRndIdValue } from '../../../utils/MathWork.tsx'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
-export const Promo = () => {
-  type ButtonItemRender = {
-    $id?: string
-    $name?: string
-    $draggable?: boolean
-    $textDecoration?: string
-  }
+type ButtonItemRender = {
+  $id?: string
+  $name?: string
+  $draggable?: boolean
+  $textDecoration?: string
+}
 
-  const btnListNoId = [
-    {
-      $name: 'About me',
-    },
-    {
-      $name: 'Projects',
-    },
-  ]
+const btnListNoId = [
+  {
+    $name: 'About me',
+  },
+  {
+    $name: 'Projects',
+  },
+]
+
+export const Promo = () => {
+  const addIdToElem: (elements: ButtonItemRender[]) => ButtonItemRender[] = (elements) => {
+    return elements.map((elem) => {
+      const strId = getRndIdValue()
+      return { ...elem, $id: strId }
+    })
+  }
 
   const renderItem: (arr: ButtonItemRender[]) => ReactNode[] = (arr: ButtonItemRender[]): ReactNode[] => {
     return arr.map(({ $name, $id }: ButtonItemRender) => {

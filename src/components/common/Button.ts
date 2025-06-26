@@ -15,10 +15,11 @@ type ButtonWrapperProps = {
 }
 
 type ButtonAttr = {
-  disabled?: boolean
+  $disabled?: boolean
   $type?: 'button' | 'submit' | 'reset'
   $name?: string
   $value?: string
+  $draggable?: boolean
 }
 
 type ButtonAttrLink = {
@@ -29,11 +30,12 @@ type ButtonAttrLink = {
   $draggable?: boolean
 }
 
-const Button = styled.button.attrs<ButtonAttr>(({ $disable, $value, $type, $name }) => ({
-  disabled: $disable || false,
+const Button = styled.button.attrs<ButtonAttr>(({ $draggable, $disabled, $value, $type, $name }) => ({
+  disabled: $disabled || false,
   value: $value || '',
   name: $name || '',
   type: $type || 'button',
+  draggable: $draggable || false,
 }))<ButtonWrapperProps>`
   width: ${(props) => props.$width || 'auto'};
   height: ${(props) => props.$height || 'auto'};
@@ -44,6 +46,7 @@ const Button = styled.button.attrs<ButtonAttr>(({ $disable, $value, $type, $name
   padding: ${(props) => props.$padding || '0'};
   color: ${(props) => props.$color || '#fff'};
   background: ${(props) => props.$background || 'transparent'};
+  user-select: none;
 `
 
 const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $value, $name, $draggable }) => ({
@@ -62,6 +65,10 @@ const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $value, $name, $drag
   padding: ${(props) => props.$padding || '0'};
   color: ${(props) => props.$color || '#fff'};
   background: ${(props) => props.$background || 'transparent'};
+  user-select: none;
+  &:hover {
+    color: ${(props) => props.$color || '#7562e0'};
+  }
 `
 
 export { Button, ButtonLink }

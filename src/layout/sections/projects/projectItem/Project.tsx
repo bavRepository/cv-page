@@ -50,7 +50,7 @@ const Img = styled.img`
 `
 
 const ProjectWrapper = styled.div`
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 14px 0 rgba(0, 0, 0, 0.25);
   background: #31313f;
   max-width: 100%;
   min-height: 100%;
