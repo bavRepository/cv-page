@@ -6,6 +6,7 @@ import { FlexWrapper } from '../../components/common/FlexWrapper.ts'
 import { Skill } from '../../components/skill/Skill.tsx'
 import { type ReactNode } from 'react'
 import { getRndIdValue } from '../../utils/MathWork.tsx'
+import { theme } from '../../styles/Theme.ts'
 
 export type ItemListTypeSkill = {
   $iconId: string
@@ -66,7 +67,7 @@ export const Main = () => {
   return (
     <SectionMain>
       <Container>
-        <SectionTitle $fontSize={'32px'} $color={'#7562e0'} $textAlign={'left'}>
+        <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           About me:
         </SectionTitle>
         <DescriptionWrapper>
@@ -76,7 +77,7 @@ export const Main = () => {
             the major skills i have.
           </Text>
           <ExperienceTextWrapper>
-            <SectionTitle $fontSize={'96px'} $color={'#7562e0'} $lineHeight={'104px'}>
+            <SectionTitle $fontSize={'96px'} $color={`${theme.colors.mainColor}`} $lineHeight={'104px'}>
               5+
             </SectionTitle>
             <HeaderText>
@@ -91,15 +92,6 @@ export const Main = () => {
     </SectionMain>
   )
 }
-
-const SectionMain = styled.main`
-  min-height: 600px;
-  background: #1a1a29;
-  padding: 85px 0 0 0;
-  ${FlexWrapper} {
-    margin-top: 30px;
-  }
-`
 
 const DescriptionWrapper = styled.div`
   display: flex;
@@ -121,4 +113,32 @@ const HeaderText = styled.h3`
   color: #fff;
   text-align: left;
   line-height: 33px;
+`
+const SectionMain = styled.main`
+  min-height: 600px;
+  background: ${theme.colors.mainBgColor};
+  padding: 85px 0 0 0;
+  ${FlexWrapper} {
+    margin-top: 30px;
+  }
+  @media (max-width: 991.98px) {
+    ${DescriptionWrapper} {
+      ${SectionTitle} {
+        font-size: 86px;
+        line-height: 94px;
+      }
+      ${Text} {
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      ${ExperienceTextWrapper} {
+        margin-top: 20px;
+        ${HeaderText} {
+          font-weight: 500;
+          font-size: 21px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
 `

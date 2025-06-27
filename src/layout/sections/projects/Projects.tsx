@@ -5,6 +5,7 @@ import { Text } from '../../../components/common/Text'
 import type { ReactNode } from 'react'
 import { Project } from './projectItem/Project.tsx'
 import { getRndIdValue } from '../../../utils/MathWork.tsx'
+import { theme } from '../../../styles/Theme.ts'
 
 export type ItemListTypeProject = {
   $id?: string
@@ -61,7 +62,7 @@ export const Projects = () => {
   return (
     <SectionProjects>
       <Container>
-        <SectionTitle $fontSize={'32px'} $color={'#7562e0'} $textAlign={'left'}>
+        <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           Featured projects:
         </SectionTitle>
         <Text $fontSize={'18px'} $color={'#fff'} $textAlign={'left'} $lineHeight={'1.77778'}>
@@ -74,20 +75,32 @@ export const Projects = () => {
   )
 }
 
-const SectionProjects = styled.section`
-  padding-top: 80px;
-  min-height: 600px;
-  background: #1a1a29;
-  ${Text} {
-    margin-top: 16px;
-  }
-`
 const ProjectContentWrapper = styled.div`
   margin-top: 36px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 324px));
-  grid-template-rows: minmax(300px, auto);
+  grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+  grid-template-rows: minmax(400px, auto);
+
   grid-auto-rows: minmax(417px, auto);
+
   gap: 23px;
   justify-content: space-between;
+`
+const SectionProjects = styled.section`
+  padding-top: 80px;
+  min-height: 600px;
+  background: ${theme.colors.mainBgColor};
+  ${Text} {
+    margin-top: 16px;
+  }
+  @media (max-width: 991.98px) {
+    ${ProjectContentWrapper} {
+      grid-template-columns: repeat(auto-fill, minmax(400px, auto));
+      grid-template-rows: minmax(400px, auto);
+      justify-content: center;
+    }
+    ${SectionTitle}, ${Text} {
+      text-align: center;
+    }
+  }
 `

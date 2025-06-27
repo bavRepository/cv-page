@@ -6,6 +6,7 @@ import { Button, ButtonLink } from '../../../components/common/Button.ts'
 import { Container } from '../../../components/common/Container.ts'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { animationScaleIn } from '../../../components/animation/Animation.tsx'
+import { theme } from '../../../styles/Theme.ts'
 
 export const Contacts = () => {
   return (
@@ -13,11 +14,11 @@ export const Contacts = () => {
       <Container>
         <ContactsGridWrapper>
           <LeftContentWrapper>
-            <SectionTitle $fontSize={'32px'} $color={'#7562e0'} $textAlign={'left'}>
+            <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
               Connect with me:
             </SectionTitle>
             <Text $textAlign={'left'}>Any convenient way for you</Text>
-            <Social color={'#7562E0'} margin={'16px 0 0 0'} justify={'left'} />
+            <Social color={`${theme.colors.mainColor}`} margin={'16px 0 0 0'} justify={'left'} />
           </LeftContentWrapper>
           <RightContentWrapper>
             <SectionTitle $fontWeight={500} $fontSize={'24px'} $color={'#fff'} $textAlign={'left'} $lineHeight={'40px'}>
@@ -45,15 +46,9 @@ export const Contacts = () => {
 
 const SectionContacts = styled.div`
   padding-top: 128px;
-  background: #1a1a29;
+  background: ${theme.colors.mainBgColor};
 `
-const ContactsGridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-template-rows: minmax(380px, auto);
-  justify-items: center;
-  gap: 23px;
-`
+
 const ContactForm = styled.form`
   margin-top: 24px;
   max-width: 472px;
@@ -79,10 +74,10 @@ const ContactForm = styled.form`
     align-items: center;
     background: transparent;
     border-radius: 8px;
-    border: 2px solid #7562e0;
+    border: 2px solid ${theme.colors.mainColor};
     transition: all 0.2s;
     &:hover {
-      background: #7562e0;
+      background: ${theme.colors.mainColor};
     }
   }
   ${FlexWrapper} {
@@ -118,3 +113,31 @@ const LeftContentWrapper = styled.div`
   }
 `
 const RightContentWrapper = styled.div``
+
+const ContactsGridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-rows: minmax(50px, auto);
+  justify-items: center;
+  gap: 23px;
+  @media (max-width: 991.98px) {
+    gap: 40px;
+
+    ${Text} {
+      text-align: center;
+      margin-top: 5px;
+    }
+    ${RightContentWrapper} {
+      ${SectionTitle} {
+        font-size: 20px;
+        line-height: 35px;
+      }
+      ${FlexWrapper} {
+        ${Text} {
+          font-size: 16px;
+          line-height: 1;
+        }
+      }
+    }
+  }
+`

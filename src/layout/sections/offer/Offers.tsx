@@ -5,6 +5,7 @@ import { Container } from '../../../components/common/Container.ts'
 import type { ReactNode } from 'react'
 import { getRndIdValue } from '../../../utils/MathWork.tsx'
 import { Offer } from './offerItem/Offer.tsx'
+import { theme } from '../../../styles/Theme.ts'
 
 export type ItemListTypeOffer = {
   $iconId: string
@@ -87,7 +88,7 @@ export const Offers = () => {
   return (
     <SectionOffer>
       <Container>
-        <SectionTitle $fontSize={'32px'} $color={'#7562e0'} $textAlign={'left'}>
+        <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           The services i offer:
         </SectionTitle>
         <FlexWrapper $wrap={'wrap'} $gap={'23px'} $justify={'space-between'}>
@@ -101,5 +102,10 @@ export const Offers = () => {
 const SectionOffer = styled.div`
   padding-top: 55px;
   min-height: 800px;
-  background: #1a1a29;
+  background: ${theme.colors.mainBgColor};
+  @media (max-width: 1199.98px) {
+    ${FlexWrapper} {
+      //justify-content: center;
+    }
+  }
 `

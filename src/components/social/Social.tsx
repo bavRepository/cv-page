@@ -41,6 +41,7 @@ const SocialIconContainer = styled.div<IconWrapperProps>`
   &:hover {
     ${animationScaleIn};
   }
+  }
 `
 
 const SocialElementContainer = styled.div<{ $margin?: string; $color?: string }>`
@@ -48,6 +49,11 @@ const SocialElementContainer = styled.div<{ $margin?: string; $color?: string }>
   ${FlexWrapper} {
     margin-top: 20px;
   }
+  @media (max-width: 991.98px) {
+    ${FlexWrapper} {
+      justify-content: center;
+      margin-top: 5px;
+    }
 `
 
 const FaceBook = styled(FaFacebook)``

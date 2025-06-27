@@ -11,6 +11,7 @@ import { getModifyStrWithRandomSpan } from '../../../utils/СhangingDataElements
 import { animationBlink, animationNeon, animationScaleIn } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { getRndIdValue } from '../../../utils/MathWork.tsx'
+import { theme } from '../../../styles/Theme.ts'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
@@ -58,12 +59,12 @@ export const Promo = () => {
   return (
     <PromoSection>
       <Container>
+        <ApproveImg src={approvedImg} alt="approved" />
         <ContentWrapper>
           <SectionTitle>Hello, i’m</SectionTitle>
           <Title>Anton Barai</Title>
           <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
           <Social justify={'center'} />
-          <Img src={approvedImg} alt="approved" />
           <ButtonLinkWrapper>{btnElementsHtml}</ButtonLinkWrapper>
         </ContentWrapper>
       </Container>
@@ -73,37 +74,22 @@ export const Promo = () => {
 }
 const BottomOpacity = styled.div`
   position: absolute;
-  bottom: -5px;
+  bottom: -15px;
   left: 0;
   height: 30px;
   width: 100%;
   background: rgba(0, 0, 0, 0.2);
 `
 
-const PromoSection = styled.section`
-  position: relative;
-  display: block;
-  min-height: 800px;
-  background: url(${bgImg}) center center / cover no-repeat;
-  padding-top: 100px;
-  box-shadow: 0 4px 65px rgba(117, 98, 224, 0.2);
-`
 const ContentWrapper = styled.div`
   padding: 150px 30px 0 30px;
   max-width: 450px;
-  position: relative;
 
   ${FlexWrapper} {
     margin-top: 30px;
   }
 `
-const Img = styled.img`
-  width: 250px;
-  position: absolute;
-  right: -44%;
-  bottom: 55%;
-  z-index: 10;
-`
+
 const Title = styled.h1`
   color: #f5f5f5;
   font-weight: 600;
@@ -133,12 +119,50 @@ const ButtonLinkWrapper = styled.div`
     ${animationNeon}
     &:hover {
       ${animationScaleIn};
-      color: #7562e0;
+      color: ${theme.colors.mainColor}
       text-shadow: none;
     }
 
     span {
       ${animationBlink(2)}
+    }
+  }
+`
+const ApproveImg = styled.img`
+  width: 250px;
+  position: absolute;
+  left: 40%;
+  top: 10%;
+  z-index: 10;
+`
+const PromoSection = styled.section`
+  position: relative;
+  display: block;
+  min-height: 800px;
+  background: url(${bgImg}) center center / cover no-repeat;
+  padding-top: 100px;
+  box-shadow: 0 4px 65px rgba(0, 65, 129, 0.5);
+  ${Container} {
+    position: relative;
+  }
+  @media (max-width: 991.98px) {
+    ${ApproveImg} {
+      left: 55%;
+      top: 19%;
+      max-width: 200px;
+    }
+  }
+  @media (max-width: 991.98px) {
+    ${SectionTitle} {
+      font-size: 30px;
+      line-height: 38px;
+    }
+    ${Title} {
+      font-size: 48px;
+      line-height: 56px;
+    }
+    ${Text} {
+      margin-top: 12px;
     }
   }
 `

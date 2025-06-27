@@ -67,7 +67,7 @@ const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $value, $name, $drag
   background: ${(props) => props.$background || 'transparent'};
   user-select: none;
   &:hover {
-    color: ${(props) => props.$color || '#7562e0'};
+    color: ${(props) => props.$color || '${theme.colors.mainColor}'};
   }
 `
 

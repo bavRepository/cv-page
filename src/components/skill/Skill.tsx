@@ -1,5 +1,6 @@
 import { Icon } from '../icon/Icon.tsx'
 import styled from 'styled-components'
+import { theme } from '../../styles/Theme.ts'
 type ItemListType = {
   $iconId: string
   $width?: string
@@ -27,10 +28,9 @@ const SkillWrapper = styled.div`
   flex-direction: column;
   background: #bdbdbd;
   padding: 0 24px 24px 24px;
-  flex-grow: 1;
   transition: all 0.3s;
   &:hover {
-    background: #7562e0;
+    background: ${theme.colors.mainColor};
     cursor: pointer;
     transform: scale(0.97);
   }
@@ -40,6 +40,29 @@ const SkillWrapper = styled.div`
     line-height: 32px;
     text-align: left;
     margin: 0;
+    min-height: 64px;
+  }
+  @media (max-width: 1199.98px) {
+    max-width: 226px;
+    height: 224px;
+    h3 {
+      font-size: 20px;
+      color: #fff;
+      line-height: 32px;
+      text-align: left;
+      margin: 0;
+    }
+  }
+  @media (max-width: 991.98px) {
+    max-width: 230px;
+    height: 228px;
+    h3 {
+      font-size: 20px;
+      color: #fff;
+      line-height: 32px;
+      text-align: left;
+      margin: 0;
+    }
   }
 `
 const DescriptionWrapper = styled.div`

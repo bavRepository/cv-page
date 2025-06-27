@@ -1,4 +1,3 @@
-import './App.css'
 import { Header } from './layout/header/Header.tsx'
 import { Promo } from './layout/sections/promo/Promo.tsx'
 import { Main } from './layout/main/Main.tsx'

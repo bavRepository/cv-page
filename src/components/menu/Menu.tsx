@@ -3,6 +3,7 @@ import { getRndIdValue } from '../../utils/MathWork.tsx'
 import type { ReactNode } from 'react'
 import { animationScaleIn, animationNeon, animationBlink } from '../animation/Animation.tsx'
 import { ButtonLink } from '../common/Button.ts'
+import { theme } from '../../styles/Theme.ts'
 
 type MenuItemRender = {
   $id?: string
@@ -49,7 +50,7 @@ export const Menu = () => {
         const tmpChar = `<span>${$name[getRandomIndex]}</span>`
         const $modifiedName = `${$name.slice(0, getRandomIndex)}${tmpChar}${$name.slice(getRandomIndex + 1)}`
         return (
-          <li key={$id}>
+          <li key={$id} role={'menuItem'}>
             <ButtonLink {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></ButtonLink>
           </li>
         )
@@ -63,21 +64,22 @@ export const Menu = () => {
   const menuElementsHtml: ReactNode[] = renderItem(menuItemsDataWithId)
 
   return (
-    <StyledMenu role="tablist">
-      <ul>{menuElementsHtml}</ul>
+    <StyledMenu>
+      <ul aria-label={'Скажи'} role={'menu'}>
+        {menuElementsHtml}
+      </ul>
     </StyledMenu>
   )
 }
 
 const StyledMenu = styled.nav`
-  padding-left: 50px;
   ul {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
     list-style: none;
-    padding-left: 0;
+    padding-left: 50px;
     justify-content: flex-start;
     li {
       transition: all 0.2s;
@@ -105,17 +107,25 @@ const StyledMenu = styled.nav`
       0 0 1em #bfe2ff,
       0 0 0.5em #bfe2ff,
       0 0 0.1em #bfe2ff;
-    animation: ${animationNeon};
+    ${animationNeon};
     outline: 8px ridge rgba(170, 50, 220, 0.6);
     border-radius: 2rem;
     &:hover {
       text-shadow: none;
       animation-name: none;
-      color: #7562e0;
+      color: ${theme.colors.mainColor};
     }
 
     span {
       ${animationBlink(3.3)};
     }
+  }
+  @media (max-width: 991.98px) {
+    ul {
+      padding-left: 0;
+    }
+  }
+  @media (max-width: 767.98px) {
+    display: none;
   }
 `
