@@ -99,13 +99,16 @@ export const Offers = () => {
   )
 }
 
-const SectionOffer = styled.div`
+const SectionOffer = styled.section`
   padding-top: 55px;
   min-height: 800px;
   background: ${theme.colors.mainBgColor};
-  @media (max-width: 1199.98px) {
+  @media (max-width: 767.98px) {
     ${FlexWrapper} {
-      //justify-content: center;
+      justify-content: center;
+    }
+    ${SectionTitle} {
+      text-align: center;
     }
   }
 `

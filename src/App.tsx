@@ -1,6 +1,6 @@
 import { Header } from './layout/header/Header.tsx'
 import { Promo } from './layout/sections/promo/Promo.tsx'
-import { Main } from './layout/main/Main.tsx'
+import { Skills } from './components/skills/Skills.tsx'
 import { Projects } from './layout/sections/projects/Projects.tsx'
 import { Contacts } from './layout/sections/contacts/Contacts.tsx'
 import { Footer } from './layout/footer/Footer.tsx'
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <Promo />
-      <Main />
+      <Skills />
       <Offers />
       <Projects />
       <Contacts />

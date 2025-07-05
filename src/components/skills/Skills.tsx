@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { SectionTitle } from '../../components/common/SectionTitle.ts'
-import { Container } from '../../components/common/Container.ts'
-import { Text } from '../../components/common/Text.ts'
-import { FlexWrapper } from '../../components/common/FlexWrapper.ts'
-import { Skill } from '../../components/skill/Skill.tsx'
+import { SectionTitle } from '../common/SectionTitle.ts'
+import { Container } from '../common/Container.ts'
+import { Text } from '../common/Text.ts'
+import { FlexWrapper } from '../common/FlexWrapper.ts'
+import { Skill } from './skill/Skill.tsx'
 import { type ReactNode } from 'react'
 import { getRndIdValue } from '../../utils/MathWork.tsx'
 import { theme } from '../../styles/Theme.ts'
@@ -47,7 +47,7 @@ const skillList: ItemListTypeSkill[] = [
   },
 ]
 
-export const Main = () => {
+export const Skills = () => {
   const renderList: (arr: ItemListTypeSkill[]) => ReactNode[] = (arr: ItemListTypeSkill[]): ReactNode[] => {
     return arr.map(({ $id, ...item }: ItemListTypeSkill): ReactNode => {
       return <Skill key={$id} {...item} />
@@ -65,7 +65,7 @@ export const Main = () => {
   const skillElementsHtml: ReactNode[] = renderList(skillItemsDataWithId)
 
   return (
-    <SectionMain>
+    <StyledSkills>
       <Container>
         <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           About me:
@@ -89,7 +89,7 @@ export const Main = () => {
           {skillElementsHtml}
         </FlexWrapper>
       </Container>
-    </SectionMain>
+    </StyledSkills>
   )
 }
 
@@ -114,14 +114,14 @@ const HeaderText = styled.h3`
   text-align: left;
   line-height: 33px;
 `
-const SectionMain = styled.main`
+const StyledSkills = styled.div`
   min-height: 600px;
   background: ${theme.colors.mainBgColor};
   padding: 85px 0 0 0;
   ${FlexWrapper} {
     margin-top: 30px;
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     ${DescriptionWrapper} {
       ${SectionTitle} {
         font-size: 86px;
@@ -139,6 +139,26 @@ const SectionMain = styled.main`
           line-height: 30px;
         }
       }
+    }
+    ${FlexWrapper} {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    ${FlexWrapper} {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+  }
+
+  @media (max-width: 576px) {
+    ${FlexWrapper} {
+      display: grid;
+      grid-template-columns: 1fr;
+      //justify-items: center;
     }
   }
 `

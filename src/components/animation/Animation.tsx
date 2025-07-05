@@ -28,8 +28,8 @@ const blinkKeyFrames = keyframes`
 92.5% {color: inherit;text-shadow: inherit;}
 `
 
-const animationBlink = (timer: string | number) => css`
-  animation: ${blinkKeyFrames} linear infinite ${timer}s;
+const animationBlink = (timer: string) => css`
+  animation: ${blinkKeyFrames} linear infinite ${timer};
 `
 
 // scaleInSkew

@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { getRndIdValue } from '../../utils/MathWork.tsx'
 import type { ReactNode } from 'react'
-import { animationScaleIn, animationNeon, animationBlink } from '../animation/Animation.tsx'
+import { animationScaleIn, animationNeon } from '../animation/Animation.tsx'
 import { ButtonLink } from '../common/Button.ts'
 import { theme } from '../../styles/Theme.ts'
+import { getAnimatedSpan } from '../../utils/СhangingDataElements.tsx'
 
 type MenuItemRender = {
   $id?: string
@@ -46,12 +47,14 @@ export const Menu = () => {
         if (!$name) {
           throw new Error('$name has no length')
         }
-        const getRandomIndex: number = Math.floor(Math.random() * $name.length)
-        const tmpChar = `<span>${$name[getRandomIndex]}</span>`
-        const $modifiedName = `${$name.slice(0, getRandomIndex)}${tmpChar}${$name.slice(getRandomIndex + 1)}`
+        const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
         return (
           <li key={$id} role={'menuItem'}>
-            <ButtonLink {...elemDataObj} dangerouslySetInnerHTML={{ __html: $modifiedName }}></ButtonLink>
+            <ButtonLink {...elemDataObj}>
+              {symbolBeforeAnimatedSpan}
+              {animatedChar}
+              {symbolAfterAnimatedSpan}
+            </ButtonLink>
           </li>
         )
       } catch (error) {
@@ -115,17 +118,13 @@ const StyledMenu = styled.nav`
       animation-name: none;
       color: ${theme.colors.mainColor};
     }
-
-    span {
-      ${animationBlink(3.3)};
-    }
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     ul {
       padding-left: 0;
     }
   }
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `

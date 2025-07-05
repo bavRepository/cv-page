@@ -89,11 +89,10 @@ const ProjectContentWrapper = styled.div`
 const SectionProjects = styled.section`
   padding-top: 80px;
   min-height: 600px;
-  background: ${theme.colors.mainBgColor};
   ${Text} {
     margin-top: 16px;
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     ${ProjectContentWrapper} {
       grid-template-columns: repeat(auto-fill, minmax(400px, auto));
       grid-template-rows: minmax(400px, auto);

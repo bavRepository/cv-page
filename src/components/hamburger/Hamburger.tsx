@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
-export const Hamburger = () => {
+export const Hamburger = (/*{ handleOpenAsideMenu }*/) => {
   const [hamburgerActive, setHamburgerActive] = useState(false)
   const handleHamburgerClick = () => {
     setHamburgerActive(!hamburgerActive)
+    // handleOpenAsideMenu(handleOpenAsideMenu)
   }
   const closeHamburger = () => {
     return (
@@ -16,6 +17,7 @@ export const Hamburger = () => {
     )
   }
   return (
+    // <HamburgerWrapper>
     <HamburgerWrapper onClick={handleHamburgerClick}>
       {hamburgerActive ? (
         closeHamburger()
@@ -31,7 +33,7 @@ export const Hamburger = () => {
 }
 
 export const HamburgerWrapper = styled.div`
-  display: block;
+  display: none;
   cursor: pointer;
   height: 30px;
   width: 30px;
@@ -40,6 +42,12 @@ export const HamburgerWrapper = styled.div`
   transform: translateY(-50%);
   right: 10px;
   padding-top: 8px;
+  @media (max-width: 768px) {
+    display: block;
+  }
+  @media (max-width: 576px) {
+    right: 10%;
+  }
 `
 
 const Span = styled.span<{ $transform?: string; $display?: string }>`

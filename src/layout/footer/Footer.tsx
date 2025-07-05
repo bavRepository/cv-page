@@ -6,7 +6,7 @@ import { Container } from '../../components/common/Container.ts'
 import { theme } from '../../styles/Theme.ts'
 export const Footer = () => {
   return (
-    <SectionFooter>
+    <StyledFooter>
       <Container>
         <MiddlePartWrapper>
           <FlexWrapper $justify={'space-between'} $gap={'20px'} $wrap={'wrap'}>
@@ -17,7 +17,7 @@ export const Footer = () => {
           <Text>@2025 Anton Barai</Text>
         </MiddlePartWrapper>
       </Container>
-    </SectionFooter>
+    </StyledFooter>
   )
 }
 
@@ -34,10 +34,15 @@ const MiddlePartWrapper = styled.div`
     opacity: 0.5;
   }
 `
-const SectionFooter = styled.div`
-  padding: 200px 0 40px 0;
+const StyledFooter = styled.section`
   background: ${theme.colors.mainBgColor};
+  padding: 200px 0 40px 0;
   @media (max-width: 991.98px) {
     padding-top: 80px;
+  }
+  ${ButtonLink} {
+    &:hover {
+      color: ${theme.colors.mainColor};
+    }
   }
 `

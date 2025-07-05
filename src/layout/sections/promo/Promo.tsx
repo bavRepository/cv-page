@@ -7,11 +7,11 @@ import { Text } from '../../../components/common/Text.ts'
 import { ButtonLink } from '../../../components/common/Button.ts'
 import approvedImg from '../../../assets/images/approved.png'
 import type { ReactNode } from 'react'
-import { getModifyStrWithRandomSpan } from '../../../utils/СhangingDataElements.tsx'
-import { animationBlink, animationNeon, animationScaleIn } from '../../../components/animation/Animation.tsx'
+import { animationNeon, animationScaleIn } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { getRndIdValue } from '../../../utils/MathWork.tsx'
 import { theme } from '../../../styles/Theme.ts'
+import { getAnimatedSpan } from '../../../utils/СhangingDataElements.tsx'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
@@ -45,8 +45,14 @@ export const Promo = () => {
         if (!$name) {
           throw new Error('$name has no length')
         }
-        const $modifiedName = getModifyStrWithRandomSpan($name)
-        return <ButtonLink key={$id} dangerouslySetInnerHTML={{ __html: $modifiedName }}></ButtonLink>
+        const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
+        return (
+          <ButtonLink key={$id}>
+            {symbolBeforeAnimatedSpan}
+            {animatedChar}
+            {symbolAfterAnimatedSpan}
+          </ButtonLink>
+        )
       } catch (error) {
         console.log(error)
       }
@@ -119,12 +125,8 @@ const ButtonLinkWrapper = styled.div`
     ${animationNeon}
     &:hover {
       ${animationScaleIn};
-      color: ${theme.colors.mainColor}
+      color: ${theme.colors.mainColor};
       text-shadow: none;
-    }
-
-    span {
-      ${animationBlink(2)}
     }
   }
 `
@@ -145,14 +147,14 @@ const PromoSection = styled.section`
   ${Container} {
     position: relative;
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     ${ApproveImg} {
       left: 55%;
       top: 19%;
       max-width: 200px;
     }
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     ${SectionTitle} {
       font-size: 30px;
       line-height: 38px;
@@ -163,6 +165,24 @@ const PromoSection = styled.section`
     }
     ${Text} {
       margin-top: 12px;
+    }
+  }
+  @media (max-width: 768px) {
+    ${ApproveImg} {
+      left: 67%;
+      top: 10%;
+      max-width: 160px;
+    }
+    ${ContentWrapper} {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @media (max-width: 576px) {
+    ${ApproveImg} {
+      left: 10%;
+      top: 10%;
+      max-width: 160px;
     }
   }
 `

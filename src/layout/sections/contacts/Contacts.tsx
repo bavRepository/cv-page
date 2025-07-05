@@ -44,9 +44,8 @@ export const Contacts = () => {
   )
 }
 
-const SectionContacts = styled.div`
+const SectionContacts = styled.section`
   padding-top: 128px;
-  background: ${theme.colors.mainBgColor};
 `
 
 const ContactForm = styled.form`

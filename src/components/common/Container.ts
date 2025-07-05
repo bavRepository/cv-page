@@ -10,15 +10,18 @@ export const Container = styled.div<ContainerWrapperProps>`
   max-width: ${(props) => props.$maxWidth || '1230px'};
   width: 100%;
   min-height: 100%;
-  //padding: ${(props) => props.$padding || '0 15px 0 15px'};
   border: 1px solid red;
-  @media (max-width: 1199.98px) {
+  @media (max-width: 1200px) {
     max-width: 960px;
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     max-width: 720px;
   }
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     max-width: 540px;
+  }
+  @media (max-width: 576px) {
+    max-width: 100%;
+    padding: 0 15px;
   }
 `

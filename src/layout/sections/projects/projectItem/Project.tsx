@@ -86,14 +86,14 @@ const ProjectWrapper = styled.div`
   ${Text} {
     min-height: 81px;
   }
-  @media (max-width: 1199.98px) {
+  @media (max-width: 1200px) {
     ${Text} {
-      min-height: 108px;
+      min-height: 88px;
       font-size: 17px;
     }
   }
 
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     max-width: 450px;
     Img {
       min-height: 250px;

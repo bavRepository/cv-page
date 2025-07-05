@@ -74,4 +74,8 @@ const OfferWrapper = styled.div`
     font-size: 22px;
     line-height: 30px;
   }
+  @media (max-width: 1200px) {
+    max-width: 304px;
+    height: 318px;
+  }
 `
