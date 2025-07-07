@@ -28,7 +28,7 @@ export const Contacts = () => {
               <input type="text" placeholder={'Name:'} name={'name'} />
               <input type="email" placeholder={'Email:'} name={'email'} />
               <textarea placeholder={'Message:'} name={'message'} />
-              <FlexWrapper $justify={'flex-end'}>
+              <FlexWrapper $justify={'flex-end'} $wrap={'wrap'}>
                 <input type="checkbox" />
                 <Text>&nbsp; I have read and agree to the&nbsp;</Text>
                 <ButtonLink>Privacy Policy</ButtonLink>
@@ -89,7 +89,6 @@ const ContactForm = styled.form`
     }
     ${ButtonLink} {
       display: block;
-      align-self: flex-end;
       box-shadow: 5px 5px 35px rgba(117, 98, 224, 0.3) inset;
       padding: 3px 3px;
       border-radius: 4px;
@@ -115,11 +114,11 @@ const RightContentWrapper = styled.div``
 
 const ContactsGridWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: minmax(50px, auto);
   justify-items: center;
   gap: 23px;
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     gap: 40px;
 
     ${Text} {
@@ -135,6 +134,21 @@ const ContactsGridWrapper = styled.div`
         ${Text} {
           font-size: 16px;
           line-height: 1;
+        }
+      }
+    }
+  }
+  @media ${theme.media.tablet} {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    ${ContactForm} {
+      input,
+      textarea {
+        padding: 10px;
+      }
+      ${FlexWrapper} {
+        gap: 10px 0;
+        ${Text} {
+          margin-top: 0;
         }
       }
     }

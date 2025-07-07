@@ -29,5 +29,8 @@ const LogoLink = styled.a.attrs(({ draggable }) => ({
     border-radius: 2rem;
     width: 160px;
     object-fit: cover;
+    &:active {
+      ${animationScaleInSkew}
+    }
   }
 `

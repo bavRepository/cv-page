@@ -49,7 +49,7 @@ const SocialElementContainer = styled.div<{ $margin?: string; $color?: string }>
   ${FlexWrapper} {
     margin-top: 20px;
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     ${FlexWrapper} {
       justify-content: center;
       margin-top: 5px;

@@ -53,4 +53,10 @@ const animationScaleIn = css`
   animation: ${scaleInKeyFrames} 1.2s ease-out;
 `
 
-export { animationScaleInSkew, animationScaleIn, animationBlink, animationNeon }
+// active translate y
+
+const transformTranslateY = (value: string) => css`
+  transform: translateY(${value});
+`
+
+export { animationScaleInSkew, animationScaleIn, animationBlink, animationNeon, transformTranslateY }

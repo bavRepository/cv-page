@@ -36,10 +36,9 @@ const HeaderOfferItem = styled.h3`
 `
 
 const OfferWrapper = styled.div`
-  margin-top: 24px;
   box-shadow: 5px 5px 35px rgba(117, 98, 224, 0.3);
   max-width: 324px;
-  height: 338px;
+  min-height: 338px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,6 +75,5 @@ const OfferWrapper = styled.div`
   }
   @media (max-width: 1200px) {
     max-width: 304px;
-    height: 318px;
   }
 `

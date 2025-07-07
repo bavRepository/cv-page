@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { getRndIdValue } from '../../utils/MathWork.tsx'
 import type { ReactNode } from 'react'
-import { animationScaleIn, animationNeon } from '../animation/Animation.tsx'
+import { animationScaleIn, animationNeon, transformTranslateY } from '../animation/Animation.tsx'
 import { ButtonLink } from '../common/Button.ts'
 import { theme } from '../../styles/Theme.ts'
-import { getAnimatedSpan } from '../../utils/СhangingDataElements.tsx'
+import { getAnimatedSpan, getHtmlElementsFromDataList } from '../../utils/ModifyElementsData.tsx'
 
-type MenuItemRender = {
+export type MenuItemRender = {
   $id?: string
   href?: string
   $color?: string
@@ -14,7 +14,7 @@ type MenuItemRender = {
   draggable?: boolean
   $animation?: string
 }
-const menuItemsDataNoId: MenuItemRender[] = [
+export const menuItemsDataNoId: MenuItemRender[] = [
   {
     href: '',
     $name: 'Home',
@@ -34,37 +34,7 @@ const menuItemsDataNoId: MenuItemRender[] = [
 ]
 
 export const Menu = () => {
-  const addIdToElem: (elements: MenuItemRender[]) => MenuItemRender[] = (elements) => {
-    return elements.map((elem) => {
-      const strId = getRndIdValue()
-      return { ...elem, $id: strId }
-    })
-  }
-
-  const renderItem: (arr: MenuItemRender[]) => ReactNode[] = (arr: MenuItemRender[]): ReactNode[] => {
-    return arr.map(({ $name, $id, ...elemDataObj }: MenuItemRender) => {
-      try {
-        if (!$name) {
-          throw new Error('$name has no length')
-        }
-        const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
-        return (
-          <li key={$id} role={'menuItem'}>
-            <ButtonLink {...elemDataObj}>
-              {symbolBeforeAnimatedSpan}
-              {animatedChar}
-              {symbolAfterAnimatedSpan}
-            </ButtonLink>
-          </li>
-        )
-      } catch (error) {
-        console.log(error)
-      }
-    })
-  }
-
-  const menuItemsDataWithId: MenuItemRender[] = addIdToElem(menuItemsDataNoId)
-  const menuElementsHtml: ReactNode[] = renderItem(menuItemsDataWithId)
+  const menuElementsHtml: ReactNode[] = getHtmlElementsFromDataList(menuItemsDataNoId)
 
   return (
     <StyledMenu>
@@ -85,19 +55,21 @@ const StyledMenu = styled.nav`
     padding-left: 50px;
     justify-content: flex-start;
     li {
+      border-radius: 2rem;
       transition: all 0.2s;
       box-shadow:
         2px 2px 26px rgba(255, 255, 255, 0.2),
         -2px -2px 26px rgba(255, 255, 255, 0.2);
-      &:hover {
-        ${animationScaleIn}
+      &:active {
+        ${transformTranslateY('5px')};
       }
     }
   }
   ${ButtonLink} {
+    background: rgba(24, 24, 36, 1);
     color: #fff;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
     display: block;
     padding: 5px 15px;
     font-weight: 600;
@@ -115,7 +87,7 @@ const StyledMenu = styled.nav`
     border-radius: 2rem;
     &:hover {
       text-shadow: none;
-      animation-name: none;
+      ${animationScaleIn};
       color: ${theme.colors.mainColor};
     }
   }
@@ -124,7 +96,7 @@ const StyledMenu = styled.nav`
       padding-left: 0;
     }
   }
-  @media (max-width: 768px) {
-    display: none;
+  @media ${theme.media.tablet} {
+    //display: none;
   }
 `

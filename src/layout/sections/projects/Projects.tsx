@@ -80,9 +80,7 @@ const ProjectContentWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, auto));
   grid-template-rows: minmax(400px, auto);
-
-  grid-auto-rows: minmax(417px, auto);
-
+  grid-auto-rows: minmax(400px, auto);
   gap: 23px;
   justify-content: space-between;
 `
@@ -94,12 +92,26 @@ const SectionProjects = styled.section`
   }
   @media (max-width: 992px) {
     ${ProjectContentWrapper} {
-      grid-template-columns: repeat(auto-fill, minmax(400px, auto));
-      grid-template-rows: minmax(400px, auto);
-      justify-content: center;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+      grid-template-rows: minmax(300px, auto);
+      justify-content: space-evenly;
+      //flex-wrap: wrap;
+      //display: flex;
+      //justify-content: center;
     }
     ${SectionTitle}, ${Text} {
       text-align: center;
     }
+  }
+
+  @media ${theme.media.tablet} {
+    ${ProjectContentWrapper} {
+      grid-template-columns: minmax(200px, auto);
+      grid-template-rows: minmax(200px, auto);
+      grid-auto-rows: minmax(200px, auto);
+    }
+  }
+
+  @media ${theme.media.mobile} {
   }
 `

@@ -55,8 +55,6 @@ const SkillWrapper = styled.div`
   }
   @media (max-width: 992px) {
     max-width: 280px;
-    width: 280px;
-
     height: 228px;
     h3 {
       font-size: 20px;
@@ -66,16 +64,11 @@ const SkillWrapper = styled.div`
       margin: 0;
     }
   }
-  @media (max-width: 768px) {
-    max-width: 304px;
-    min-height: 250px;
-    width: 100%;
+  @media ${theme.media.tablet} {
   }
 
-  //@media (max-width: 576px) {
-  //  max-width: 100%;
-  //  width: 100%;
-  //}
+  @media ${theme.media.mobile} {
+  }
 `
 const DescriptionWrapper = styled.div`
   margin-top: 14px;

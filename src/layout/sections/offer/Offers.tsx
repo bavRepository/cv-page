@@ -103,7 +103,18 @@ const SectionOffer = styled.section`
   padding-top: 55px;
   min-height: 800px;
   background: ${theme.colors.mainBgColor};
-  @media (max-width: 767.98px) {
+  ${FlexWrapper} {
+    margin-top: 24px;
+  }
+  @media (max-width: 992px) {
+    ${SectionTitle} {
+      text-align: center;
+    }
+    ${FlexWrapper} {
+      justify-content: space-evenly;
+    }
+  }
+  @media ${theme.media.tablet} {
     ${FlexWrapper} {
       justify-content: center;
     }

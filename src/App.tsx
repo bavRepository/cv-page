@@ -1,4 +1,4 @@
-import { Header } from './layout/header/Header.tsx'
+import { HeaderMenu } from './layout/header/headerMenu/HeaderMenu.tsx'
 import { Promo } from './layout/sections/promo/Promo.tsx'
 import { Skills } from './components/skills/Skills.tsx'
 import { Projects } from './layout/sections/projects/Projects.tsx'
@@ -8,7 +8,7 @@ import { Offers } from './layout/sections/offer/Offers.tsx'
 function App() {
   return (
     <div className="App">
-      <Header />
+      <HeaderMenu />
       <Promo />
       <Skills />
       <Offers />

@@ -7,11 +7,11 @@ import { Text } from '../../../components/common/Text.ts'
 import { ButtonLink } from '../../../components/common/Button.ts'
 import approvedImg from '../../../assets/images/approved.png'
 import type { ReactNode } from 'react'
-import { animationNeon, animationScaleIn } from '../../../components/animation/Animation.tsx'
+import { animationNeon, animationScaleIn, transformTranslateY } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { getRndIdValue } from '../../../utils/MathWork.tsx'
 import { theme } from '../../../styles/Theme.ts'
-import { getAnimatedSpan } from '../../../utils/СhangingDataElements.tsx'
+import { getAnimatedSpan } from '../../../utils/ModifyElementsData.tsx'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
@@ -65,7 +65,7 @@ export const Promo = () => {
   return (
     <PromoSection>
       <Container>
-        <ApproveImg src={approvedImg} alt="approved" />
+        <ApproveImg draggable={false} src={approvedImg} alt="approved" />
         <ContentWrapper>
           <SectionTitle>Hello, i’m</SectionTitle>
           <Title>Anton Barai</Title>
@@ -123,6 +123,9 @@ const ButtonLinkWrapper = styled.div`
     text-decoration: none;
     transition: all 0.2s;
     ${animationNeon}
+    // &:active {
+    //   ${transformTranslateY('5px')};
+    // }
     &:hover {
       ${animationScaleIn};
       color: ${theme.colors.mainColor};
@@ -133,9 +136,10 @@ const ButtonLinkWrapper = styled.div`
 const ApproveImg = styled.img`
   width: 250px;
   position: absolute;
-  left: 40%;
-  top: 10%;
+  left: 44%;
+  top: 13%;
   z-index: 10;
+  user-select: none;
 `
 const PromoSection = styled.section`
   position: relative;
@@ -147,13 +151,7 @@ const PromoSection = styled.section`
   ${Container} {
     position: relative;
   }
-  @media (max-width: 992px) {
-    ${ApproveImg} {
-      left: 55%;
-      top: 19%;
-      max-width: 200px;
-    }
-  }
+
   @media (max-width: 992px) {
     ${SectionTitle} {
       font-size: 30px;
@@ -166,23 +164,41 @@ const PromoSection = styled.section`
     ${Text} {
       margin-top: 12px;
     }
-  }
-  @media (max-width: 768px) {
     ${ApproveImg} {
-      left: 67%;
+      left: 55%;
+      top: 14%;
+      max-width: 200px;
+    }
+  }
+  @media ${theme.media.tablet} {
+    ${ApproveImg} {
+      left: 57%;
       top: 10%;
-      max-width: 160px;
+      max-width: 180px;
     }
     ${ContentWrapper} {
       padding-left: 0;
       padding-right: 0;
     }
   }
-  @media (max-width: 576px) {
+
+  @media ${theme.media.mobile} {
+    min-height: 700px;
+
+    ${SectionTitle} {
+      font-size: 30px;
+      line-height: 38px;
+    }
+    ${Title} {
+      font-size: 38px;
+      line-height: 44px;
+    }
+    ${Text} {
+      margin-top: 12px;
+    }
     ${ApproveImg} {
       left: 10%;
       top: 10%;
-      max-width: 160px;
     }
   }
 `

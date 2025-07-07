@@ -37,12 +37,20 @@ const MiddlePartWrapper = styled.div`
 const StyledFooter = styled.section`
   background: ${theme.colors.mainBgColor};
   padding: 200px 0 40px 0;
-  @media (max-width: 991.98px) {
-    padding-top: 80px;
-  }
   ${ButtonLink} {
     &:hover {
       color: ${theme.colors.mainColor};
+    }
+  }
+  @media (max-width: 992px) {
+    padding-top: 80px;
+  }
+  @media ${theme.media.mobile} {
+    ${MiddlePartWrapper} {
+      ${FlexWrapper} {
+        justify-content: center;
+        gap: 20px 45px;
+      }
     }
   }
 `

@@ -1,26 +1,31 @@
 import styled from 'styled-components'
-import { useState } from 'react'
 
-export const Hamburger = (/*{ handleOpenAsideMenu }*/) => {
-  const [hamburgerActive, setHamburgerActive] = useState(false)
+import { theme } from '../../styles/Theme.ts'
+import { selectHamburgerState, setHamburgerState } from '../../redux/slices/hamburgerSlice.tsx'
+
+import { useDispatch, useSelector } from 'react-redux'
+export const Hamburger = () => {
+  const dispatch = useDispatch()
+  const activeHamburger = useSelector(selectHamburgerState)
+  // const media768State = useSelector(selectMedia768State)
+
   const handleHamburgerClick = () => {
-    setHamburgerActive(!hamburgerActive)
-    // handleOpenAsideMenu(handleOpenAsideMenu)
+    dispatch(setHamburgerState())
   }
-  const closeHamburger = () => {
+
+  const openMenu = () => {
     return (
       <>
         <Span $transform={'translateY(3px) rotate(-45deg)'} />
-        <Span />
+        {/*<Span />*/}
         <Span $transform={'translateY(3px) rotate(45deg)'} />
       </>
     )
   }
   return (
-    // <HamburgerWrapper>
     <HamburgerWrapper onClick={handleHamburgerClick}>
-      {hamburgerActive ? (
-        closeHamburger()
+      {activeHamburger ? (
+        openMenu()
       ) : (
         <>
           <Span />
@@ -33,7 +38,7 @@ export const Hamburger = (/*{ handleOpenAsideMenu }*/) => {
 }
 
 export const HamburgerWrapper = styled.div`
-  display: none;
+  display: block;
   cursor: pointer;
   height: 30px;
   width: 30px;
@@ -42,15 +47,12 @@ export const HamburgerWrapper = styled.div`
   transform: translateY(-50%);
   right: 10px;
   padding-top: 8px;
-  @media (max-width: 768px) {
-    display: block;
-  }
-  @media (max-width: 576px) {
+  @media ${theme.media.tablet} {
     right: 10%;
   }
 `
 
-const Span = styled.span<{ $transform?: string; $display?: string }>`
+const Span = styled.span<{ $transform?: string }>`
   display: block;
   height: 2px;
   width: 30px;
@@ -63,7 +65,6 @@ const Span = styled.span<{ $transform?: string; $display?: string }>`
     margin-bottom: ${(props) => (props.$transform ? '-5px' : '0')};
   }
   &:nth-child(2) {
-    display: ${(props) => props.$display || 'none'};
     transform: ${(props) => props.$transform || 'none'};
   }
   &:nth-child(3) {

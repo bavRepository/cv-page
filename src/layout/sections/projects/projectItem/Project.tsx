@@ -100,7 +100,7 @@ const ProjectWrapper = styled.div`
     }
 
     ${Text} {
-      min-height: 50px;
+      min-height: 81px;
     }
   }
 `
