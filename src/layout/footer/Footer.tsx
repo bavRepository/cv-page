@@ -42,7 +42,7 @@ const StyledFooter = styled.section`
       color: ${theme.colors.mainColor};
     }
   }
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     padding-top: 80px;
   }
   @media ${theme.media.mobile} {

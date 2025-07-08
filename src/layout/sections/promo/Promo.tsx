@@ -9,59 +9,44 @@ import approvedImg from '../../../assets/images/approved.png'
 import type { ReactNode } from 'react'
 import { animationNeon, animationScaleIn, transformTranslateY } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
-import { getRndIdValue } from '../../../utils/MathWork.tsx'
 import { theme } from '../../../styles/Theme.ts'
-import { getAnimatedSpan } from '../../../utils/ModifyElementsData.tsx'
+import { getLinksElementsFromDataList } from '../../../utils/ModifyElementsData.tsx'
+import { elementsData } from '../../../Data/ElementsData.tsx'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
-type ButtonItemRender = {
-  $id?: string
-  $name?: string
-  $draggable?: boolean
-  $textDecoration?: string
-}
-
-const btnListNoId = [
-  {
-    $name: 'About me',
-  },
-  {
-    $name: 'Projects',
-  },
-]
-
 export const Promo = () => {
-  const addIdToElem: (elements: ButtonItemRender[]) => ButtonItemRender[] = (elements) => {
-    return elements.map((elem) => {
-      const strId = getRndIdValue()
-      return { ...elem, $id: strId }
-    })
-  }
-
-  const renderItem: (arr: ButtonItemRender[]) => ReactNode[] = (arr: ButtonItemRender[]): ReactNode[] => {
-    return arr.map(({ $name, $id }: ButtonItemRender) => {
-      try {
-        if (!$name) {
-          throw new Error('$name has no length')
-        }
-        const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
-        return (
-          <ButtonLink key={$id}>
-            {symbolBeforeAnimatedSpan}
-            {animatedChar}
-            {symbolAfterAnimatedSpan}
-          </ButtonLink>
-        )
-      } catch (error) {
-        console.log(error)
-      }
-    })
-  }
-
-  const btnListWithId: ButtonItemRender[] = addIdToElem(btnListNoId)
-  const btnElementsHtml: ReactNode[] = renderItem(btnListWithId)
-
+  // const addIdToElem: (elements: ButtonItemRender[]) => ButtonItemRender[] = (elements) => {
+  //   return elements.map((elem) => {
+  //     const strId = getRndIdValue()
+  //     return { ...elem, $id: strId }
+  //   })
+  // }
+  //
+  // const renderItem: (arr: ButtonItemRender[]) => ReactNode[] = (arr: ButtonItemRender[]): ReactNode[] => {
+  //   return arr.map(({ $name, $id }: ButtonItemRender) => {
+  //     try {
+  //       if (!$name) {
+  //         throw new Error('$name has no length')
+  //       }
+  //       const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
+  //       return (
+  //         <ButtonLink key={$id}>
+  //           {symbolBeforeAnimatedSpan}
+  //           {animatedChar}
+  //           {symbolAfterAnimatedSpan}
+  //         </ButtonLink>
+  //       )
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   })
+  // }
+  //
+  // const btnListWithId: ButtonItemRender[] = addIdToElem(btnListNoId)
+  // const btnElementsHtml: ReactNode[] = renderItem(btnListWithId)
+  const { btnListNoId } = elementsData()
+  const linksHtml: ReactNode[] = getLinksElementsFromDataList(btnListNoId)
   return (
     <PromoSection>
       <Container>
@@ -71,7 +56,7 @@ export const Promo = () => {
           <Title>Anton Barai</Title>
           <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
           <Social justify={'center'} />
-          <ButtonLinkWrapper>{btnElementsHtml}</ButtonLinkWrapper>
+          <ButtonLinkWrapper>{linksHtml}</ButtonLinkWrapper>
         </ContentWrapper>
       </Container>
       <BottomOpacity />
@@ -88,7 +73,7 @@ const BottomOpacity = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  padding: 150px 30px 0 30px;
+  padding: 160px 30px 0 30px;
   max-width: 450px;
 
   ${FlexWrapper} {
@@ -105,13 +90,24 @@ const Title = styled.h1`
   margin: 0;
 `
 
-const ButtonLinkWrapper = styled.div`
+const ButtonLinkWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 50px;
   gap: 30px;
+  list-style: none;
+
+  li {
+    display: block;
+    border-radius: 2rem;
+    transition: all 0.2s;
+    &:active {
+      ${transformTranslateY('5px')};
+    }
+  }
   ${ButtonLink} {
+    display: block;
     font-size: 16px;
     line-height: 24px;
     font-weight: 600;
@@ -123,9 +119,6 @@ const ButtonLinkWrapper = styled.div`
     text-decoration: none;
     transition: all 0.2s;
     ${animationNeon}
-    // &:active {
-    //   ${transformTranslateY('5px')};
-    // }
     &:hover {
       ${animationScaleIn};
       color: ${theme.colors.mainColor};
@@ -152,7 +145,7 @@ const PromoSection = styled.section`
     position: relative;
   }
 
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     ${SectionTitle} {
       font-size: 30px;
       line-height: 38px;
@@ -199,6 +192,10 @@ const PromoSection = styled.section`
     ${ApproveImg} {
       left: 10%;
       top: 10%;
+    }
+    ${ContentWrapper} {
+      margin: 0 auto;
+      padding-top: 180px;
     }
   }
 `

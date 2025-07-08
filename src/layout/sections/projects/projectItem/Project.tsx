@@ -93,7 +93,7 @@ const ProjectWrapper = styled.div`
     }
   }
 
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     max-width: 450px;
     Img {
       min-height: 250px;

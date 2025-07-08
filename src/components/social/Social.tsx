@@ -3,6 +3,7 @@ import { PiInstagramLogoFill } from 'react-icons/pi'
 import styled from 'styled-components'
 import { animationScaleIn } from '../animation/Animation.tsx'
 import { FlexWrapper } from '../common/FlexWrapper.ts'
+import { theme } from '../../styles/Theme.ts'
 
 export const Social = ({ margin, justify, color }: { margin?: string; justify?: string; color?: string }) => {
   return (
@@ -49,7 +50,7 @@ const SocialElementContainer = styled.div<{ $margin?: string; $color?: string }>
   ${FlexWrapper} {
     margin-top: 20px;
   }
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     ${FlexWrapper} {
       justify-content: center;
       margin-top: 5px;

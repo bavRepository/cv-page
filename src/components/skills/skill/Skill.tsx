@@ -53,7 +53,7 @@ const SkillWrapper = styled.div`
       margin: 0;
     }
   }
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     max-width: 280px;
     height: 228px;
     h3 {

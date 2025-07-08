@@ -1,40 +1,14 @@
 import styled from 'styled-components'
-import { getRndIdValue } from '../../utils/MathWork.tsx'
 import type { ReactNode } from 'react'
 import { animationScaleIn, animationNeon, transformTranslateY } from '../animation/Animation.tsx'
 import { ButtonLink } from '../common/Button.ts'
 import { theme } from '../../styles/Theme.ts'
-import { getAnimatedSpan, getHtmlElementsFromDataList } from '../../utils/ModifyElementsData.tsx'
-
-export type MenuItemRender = {
-  $id?: string
-  href?: string
-  $color?: string
-  $name: string
-  draggable?: boolean
-  $animation?: string
-}
-export const menuItemsDataNoId: MenuItemRender[] = [
-  {
-    href: '',
-    $name: 'Home',
-  },
-  {
-    href: '',
-    $name: 'About me',
-  },
-  {
-    href: '',
-    $name: 'Projects',
-  },
-  {
-    href: '',
-    $name: 'Contact',
-  },
-]
+import { getLinksElementsFromDataList } from '../../utils/ModifyElementsData.tsx'
+import { elementsData } from '../../Data/ElementsData.tsx'
 
 export const Menu = () => {
-  const menuElementsHtml: ReactNode[] = getHtmlElementsFromDataList(menuItemsDataNoId)
+  const { menuItemsDataNoId } = elementsData()
+  const menuElementsHtml: ReactNode[] = getLinksElementsFromDataList(menuItemsDataNoId)
 
   return (
     <StyledMenu>
@@ -91,12 +65,9 @@ const StyledMenu = styled.nav`
       color: ${theme.colors.mainColor};
     }
   }
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     ul {
       padding-left: 0;
     }
-  }
-  @media ${theme.media.tablet} {
-    //display: none;
   }
 `

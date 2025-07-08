@@ -12,11 +12,11 @@ export const Container = styled.div<ContainerWrapperProps>`
   max-width: 1200px;
   width: 100%;
   min-height: 100%;
-  border: 1px solid red;
+  //border: 1px solid red;
   //@media (max-width: 1200px) {
   //  max-width: 960px;
   //}
-  //@media (max-width: 992px) {
+  //@media ${theme.media.tabletLarge} {
   //  max-width: 720px;
   //}
   //@media ${theme.media.tablet} {

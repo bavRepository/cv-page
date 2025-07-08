@@ -90,7 +90,7 @@ const SectionProjects = styled.section`
   ${Text} {
     margin-top: 16px;
   }
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     ${ProjectContentWrapper} {
       grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
       grid-template-rows: minmax(300px, auto);

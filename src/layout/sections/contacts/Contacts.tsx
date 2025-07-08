@@ -118,7 +118,7 @@ const ContactsGridWrapper = styled.div`
   grid-template-rows: minmax(50px, auto);
   justify-items: center;
   gap: 23px;
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     gap: 40px;
 
     ${Text} {

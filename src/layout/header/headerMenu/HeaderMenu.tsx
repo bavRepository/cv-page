@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import styled from 'styled-components'
 import { Logo } from '../../../components/logo/Logo.tsx'
 import { Menu } from '../../../components/menu/Menu.tsx'
@@ -17,13 +15,13 @@ export const HeaderMenu = () => {
   const media768State = useSelector(selectMedia768State)
   const hamburgerState = useSelector(selectHamburgerState)
   useEffect(() => {
-    const mobileMediaQuery = window.matchMedia('(max-width: 768px)')
-    function handleMobileChange(event) {
+    const mobileMediaQuery: MediaQueryList = window.matchMedia('(max-width: 768px)')
+    function handleMobileChange(event: MediaQueryList | MediaQueryListEvent) {
       if (event.matches) {
         dispatch(setMedia768State(true))
-        dispatch(setHamburgerState(false))
       } else {
         dispatch(setMedia768State(false))
+        dispatch(setHamburgerState(false))
       }
     }
     handleMobileChange(mobileMediaQuery)
@@ -34,18 +32,12 @@ export const HeaderMenu = () => {
   }, [dispatch])
   return (
     <StyledHeader>
-      $
-      {hamburgerState ? (
-        <MobileMenu $position={'fixed'} $left={'0'} />
-      ) : (
-        <MobileMenu $position={'static'} $left={'-100%'} />
-      )}
+      {hamburgerState ? <MobileMenu $position={'fixed'} $left={'0'} /> : <MobileMenu />}
       <Container>
         <NavBlockWrapper>
           <Logo />
           {!media768State ? <Menu /> : <Hamburger />}
         </NavBlockWrapper>
-        {/*{media768State ?  : null}*/}
       </Container>
     </StyledHeader>
   )
@@ -59,7 +51,7 @@ const NavBlockWrapper = styled.div`
   padding: 20px;
   gap: 30px;
   flex-wrap: wrap;
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     justify-content: space-evenly;
     padding: 20px 8px 20px 8px;
   }
@@ -69,6 +61,7 @@ const NavBlockWrapper = styled.div`
 `
 
 const StyledHeader = styled.header`
+  //height: 64px;
   position: fixed;
   width: 100%;
   left: 0;

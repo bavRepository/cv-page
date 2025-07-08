@@ -4,7 +4,10 @@ export const theme = {
     mainBgColor: '#1a1a29',
   },
   media: {
+    tabletLarge: 'screen and (max-width: 992px)',
     tablet: 'screen and (max-width: 768px)',
     mobile: 'screen and (max-width: 576px)',
+    hoverHover: 'hover: hover',
+    noHover: 'hover: none',
   },
 }

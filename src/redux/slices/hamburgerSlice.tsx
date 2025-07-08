@@ -8,8 +8,8 @@ const hamburgerSlice = createSlice({
   name: 'hamburger',
   initialState,
   reducers: {
-    setHamburgerState: (state, action: { payload?: boolean; type?: string }) => {
-      state.active = action.payload ?? !state.active
+    setHamburgerState: (state, action: { payload?: boolean }) => {
+      state.active = action?.payload ?? !state.active
     },
   },
 })

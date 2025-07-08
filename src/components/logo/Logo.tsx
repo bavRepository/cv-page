@@ -20,7 +20,6 @@ const LogoLink = styled.a.attrs(({ draggable }) => ({
   &:hover {
     ${animationScaleInSkew}
   }
-
   box-shadow:
     5px 5px 30px rgba(255, 255, 255, 0.1),
     -5px -5px 30px rgba(255, 255, 255, 0.1);
@@ -29,8 +28,5 @@ const LogoLink = styled.a.attrs(({ draggable }) => ({
     border-radius: 2rem;
     width: 160px;
     object-fit: cover;
-    &:active {
-      ${animationScaleInSkew}
-    }
   }
 `

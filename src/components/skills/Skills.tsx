@@ -121,7 +121,7 @@ const StyledSkills = styled.section`
   ${FlexWrapper} {
     margin-top: 30px;
   }
-  @media (max-width: 992px) {
+  @media ${theme.media.tabletLarge} {
     ${DescriptionWrapper} {
       ${SectionTitle} {
         font-size: 86px;

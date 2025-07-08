@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 export const Hamburger = () => {
   const dispatch = useDispatch()
   const activeHamburger = useSelector(selectHamburgerState)
-  // const media768State = useSelector(selectMedia768State)
 
   const handleHamburgerClick = () => {
     dispatch(setHamburgerState())
@@ -17,19 +16,18 @@ export const Hamburger = () => {
     return (
       <>
         <Span $transform={'translateY(3px) rotate(-45deg)'} />
-        {/*<Span />*/}
         <Span $transform={'translateY(3px) rotate(45deg)'} />
       </>
     )
   }
   return (
-    <HamburgerWrapper onClick={handleHamburgerClick}>
+    <HamburgerWrapper aria-label={activeHamburger ? 'Open menu' : 'Close menu'} onClick={handleHamburgerClick}>
       {activeHamburger ? (
         openMenu()
       ) : (
         <>
           <Span />
-          <Span $display={'block'} />
+          <Span />
           <Span />
         </>
       )}

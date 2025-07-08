@@ -48,5 +48,4 @@ button  {
 section:not(:nth-of-type(2)){
     background-color: ${theme.colors.mainBgColor};
 }
-
 `
