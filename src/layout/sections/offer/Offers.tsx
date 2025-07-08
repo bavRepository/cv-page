@@ -2,29 +2,13 @@ import { SectionTitle } from '../../../components/common/SectionTitle.ts'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import styled from 'styled-components'
 import { Container } from '../../../components/common/Container.ts'
-import type { ReactNode } from 'react'
-import { getRndIdValue } from '../../../utils/MathWork.tsx'
-import { Offer } from './offerItem/Offer.tsx'
 import { theme } from '../../../styles/Theme.ts'
 import { elementsData } from '../../../Data/ElementsData.tsx'
-
+import { getOffersElementsFromDataList } from '../../../Data/ModifyElementsData.tsx'
 export const Offers = () => {
   const { offerList } = elementsData()
-  const renderList: (arr: ItemListTypeOffer[]) => ReactNode[] = (arr: ItemListTypeOffer[]): ReactNode[] => {
-    return arr.map(({ $id, ...item }: ItemListTypeOffer): ReactNode => {
-      return <Offer key={$id} {...item} />
-    })
-  }
 
-  const addIdToElem: (elements: ItemListTypeOffer[]) => ItemListTypeOffer[] = (elements) => {
-    return elements.map((elem) => {
-      const strId = getRndIdValue()
-      return { ...elem, $id: strId }
-    })
-  }
-
-  const offerItemsDataWithId = addIdToElem(offerList)
-  const offerElementsHtml: ReactNode[] = renderList(offerItemsDataWithId)
+  const offersElements = getOffersElementsFromDataList(offerList)
 
   return (
     <SectionOffer>
@@ -33,7 +17,7 @@ export const Offers = () => {
           The services i offer:
         </SectionTitle>
         <FlexWrapper $wrap={'wrap'} $gap={'23px'} $justify={'space-between'}>
-          {offerElementsHtml}
+          {offersElements}
         </FlexWrapper>
       </Container>
     </SectionOffer>

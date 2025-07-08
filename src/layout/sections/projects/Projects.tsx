@@ -3,62 +3,15 @@ import { SectionTitle } from '../../../components/common/SectionTitle.ts'
 import { Container } from '../../../components/common/Container.ts'
 import { Text } from '../../../components/common/Text'
 import type { ReactNode } from 'react'
-import { Project } from './projectItem/Project.tsx'
-import { getRndIdValue } from '../../../utils/MathWork.tsx'
+// import { Project } from './projectItem/Project.tsx'
+// import { getRndIdValue } from '../../../utils/MathWork.tsx'
 import { theme } from '../../../styles/Theme.ts'
+import { elementsData } from '../../../Data/ElementsData.tsx'
+import { getProjectsElementsFromDataList } from '../../../Data/ModifyElementsData.tsx'
 
-export type ItemListTypeProject = {
-  $id?: string
-  $img: string
-  $alt?: string
-  $title?: string
-  $text?: string
-  $viewLive?: string
-  $gitHubRepo?: string
-}
-
-const projectList: ItemListTypeProject[] = [
-  {
-    $img: './uber.jpeg',
-    $alt: 'uber',
-    $title: 'UBER',
-    $text: 'The website of the uber service where you can get acquainted with all the features of this company',
-    $viewLive: 'https://bavrepository.github.io/Projects/UberNew/src/',
-    $gitHubRepo: 'https://github.com/bavRepository/bavRepository.github.io/tree/main/Projects/UberNew/src',
-  },
-  {
-    $img: './fit.jpg',
-    $alt: 'fit',
-    $title: 'HEALTHY EATING',
-    $text: 'Healthy eating site that also has a calorie calculator',
-    $viewLive: 'https://bavrepository.github.io/Projects/Fit/src/',
-    $gitHubRepo: 'https://github.com/bavRepository/bavRepository.github.io/tree/main/Projects/Fit/src',
-  },
-  {
-    $img: './pulse.jpeg',
-    $alt: 'pulse',
-    $title: 'PULSOMETER',
-    $text: 'Website presentation and sale of products heart rate monitor',
-    $viewLive: 'https://bavrepository.github.io/Projects/PulsometerNew/src/',
-    $gitHubRepo: 'https://github.com/bavRepository/bavRepository.github.io/tree/main/Projects/PulsometerNew/src',
-  },
-]
 export const Projects = () => {
-  const renderList: (arr: ItemListTypeProject[]) => ReactNode[] = (arr: ItemListTypeProject[]): ReactNode[] => {
-    return arr.map(({ $id, ...item }: ItemListTypeProject): ReactNode => {
-      return <Project key={$id} {...item} />
-    })
-  }
-
-  const addIdToElem: (elements: ItemListTypeProject[]) => ItemListTypeProject[] = (elements) => {
-    return elements.map((elem) => {
-      const strId = getRndIdValue()
-      return { ...elem, $id: strId }
-    })
-  }
-
-  const projectItemsDataWithId = addIdToElem(projectList)
-  const projectElementsHtml: ReactNode[] = renderList(projectItemsDataWithId)
+  const { projectList } = elementsData()
+  const projectElementsHtml: ReactNode[] = getProjectsElementsFromDataList(projectList)
   return (
     <SectionProjects>
       <Container>

@@ -3,66 +3,14 @@ import { SectionTitle } from '../common/SectionTitle.ts'
 import { Container } from '../common/Container.ts'
 import { Text } from '../common/Text.ts'
 import { FlexWrapper } from '../common/FlexWrapper.ts'
-import { Skill } from './skill/Skill.tsx'
 import { type ReactNode } from 'react'
-import { getRndIdValue } from '../../utils/MathWork.tsx'
 import { theme } from '../../styles/Theme.ts'
-
-export type ItemListTypeSkill = {
-  $iconId: string
-  $width?: string
-  $height?: string
-  $viewBox?: string
-  $text?: string
-  $id?: string
-}
-const skillList: ItemListTypeSkill[] = [
-  {
-    $iconId: 'rulerPan',
-    $width: '42',
-    $height: '42',
-    $viewBox: '0 0 42 42',
-    $text: 'UI & UX\n' + 'DESIGNING',
-  },
-  {
-    $iconId: 'code',
-    $width: '52',
-    $height: '52',
-    $viewBox: '0 0 52 52',
-    $text: 'WEB\n' + 'DEVELOPMENT',
-  },
-  {
-    $iconId: 'android',
-    $width: '62',
-    $height: '62',
-    $viewBox: '0 0 62 62',
-    $text: 'MOBILE\n' + 'DEVELOPMENT',
-  },
-  {
-    $iconId: 'python',
-    $width: '55',
-    $height: '55',
-    $viewBox: '0 0 55 55',
-    $text: 'WEB SCRAPING\n' + 'WITH PYTHON',
-  },
-]
+import { elementsData } from '../../Data/ElementsData.tsx'
+import { getSkillsElementsFromDataList } from '../../Data/ModifyElementsData.tsx'
 
 export const Skills = () => {
-  const renderList: (arr: ItemListTypeSkill[]) => ReactNode[] = (arr: ItemListTypeSkill[]): ReactNode[] => {
-    return arr.map(({ $id, ...item }: ItemListTypeSkill): ReactNode => {
-      return <Skill key={$id} {...item} />
-    })
-  }
-
-  const addIdToElem: (elements: ItemListTypeSkill[]) => ItemListTypeSkill[] = (elements) => {
-    return elements.map((elem) => {
-      const strId = getRndIdValue()
-      return { ...elem, $id: strId }
-    })
-  }
-
-  const skillItemsDataWithId = addIdToElem(skillList)
-  const skillElementsHtml: ReactNode[] = renderList(skillItemsDataWithId)
+  const { skillList } = elementsData()
+  const skillElementsHtml: ReactNode[] = getSkillsElementsFromDataList(skillList)
 
   return (
     <StyledSkills>

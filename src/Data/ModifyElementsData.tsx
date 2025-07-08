@@ -1,8 +1,20 @@
-import { getRandomValue, getRndIdValue } from './MathWork.tsx'
+import { getRandomValue, getRndIdValue } from '../utils/MathWork.tsx'
 import { Span } from '../components/common/Span.ts'
 import type { ReactNode } from 'react'
 import { ButtonLink } from '../components/common/Button.ts'
 import { Offer } from '../layout/sections/offer/offerItem/Offer.tsx'
+import { Project } from '../layout/sections/projects/projectItem/Project.tsx'
+import { Skill } from '../components/skills/skill/Skill.tsx'
+
+type ItemListTypeOffer = {
+  $iconId: string
+  $width?: string
+  $height?: string
+  $viewBox?: string
+  $header?: string
+  $text?: string
+  $id?: string
+}
 
 type ButtonItemRender = {
   $id?: string
@@ -20,9 +32,28 @@ type menuItemsDataNoIdType = {
   $animation?: string
 }
 
+type ItemListTypeProject = {
+  $id?: string
+  $img: string
+  $alt?: string
+  $title?: string
+  $text?: string
+  $viewLive?: string
+  $gitHubRepo?: string
+}
+
+type ItemListTypeSkill = {
+  $iconId: string
+  $width?: string
+  $height?: string
+  $viewBox?: string
+  $text?: string
+  $id?: string
+}
+
 const addIdToElem: (
-  elements: menuItemsDataNoIdType[] | ButtonItemRender[],
-) => menuItemsDataNoIdType[] | ButtonItemRender[] = (elements) => {
+  elements: menuItemsDataNoIdType[] | ButtonItemRender[] | ItemListTypeOffer[],
+) => menuItemsDataNoIdType[] | ButtonItemRender[] | ItemListTypeOffer[] = (elements) => {
   return elements.map((elem) => {
     const strId = getRndIdValue()
     return { ...elem, $id: strId }
@@ -74,14 +105,44 @@ const getLinksElementsFromDataList: (elements: menuItemsDataNoIdType[] | ButtonI
   return renderItem(menuItemsDataWithId)
 }
 
-const getOffersElementsFromDataList = () => {
+const getOffersElementsFromDataList = (offerList: ItemListTypeOffer[]): ReactNode[] => {
   const renderList: (arr: ItemListTypeOffer[]) => ReactNode[] = (arr: ItemListTypeOffer[]): ReactNode[] => {
     return arr.map(({ $id, ...item }: ItemListTypeOffer): ReactNode => {
       return <Offer key={$id} {...item} />
     })
   }
   const offerItemsDataWithId = addIdToElem(offerList)
-  const offerElementsHtml: ReactNode[] = renderList(offerItemsDataWithId)
+
+  return renderList(offerItemsDataWithId)
 }
 
-export { getAnimatedSpan, getLinksElementsFromDataList, getOffersElementsFromDataList }
+const getProjectsElementsFromDataList = (projectList: ItemListTypeProject[]): ReactNode[] => {
+  const renderList: (arr: ItemListTypeProject[]) => ReactNode[] = (arr: ItemListTypeProject[]): ReactNode[] => {
+    return arr.map(({ $id, ...item }: ItemListTypeProject): ReactNode => {
+      return <Project key={$id} {...item} />
+    })
+  }
+
+  const peojectItemsDataWithId = addIdToElem(projectList)
+
+  return renderList(peojectItemsDataWithId)
+}
+
+const getSkillsElementsFromDataList = (skillsList: ItemListTypeSkill[]): ReactNode[] => {
+  const renderList: (arr: ItemListTypeSkill[]) => ReactNode[] = (arr: ItemListTypeSkill[]): ReactNode[] => {
+    return arr.map(({ $id, ...item }: ItemListTypeSkill): ReactNode => {
+      return <Skill key={$id} {...item} />
+    })
+  }
+  const skillsItemsDataWithId = addIdToElem(skillsList)
+
+  return renderList(skillsItemsDataWithId)
+}
+
+export {
+  getAnimatedSpan,
+  getLinksElementsFromDataList,
+  getOffersElementsFromDataList,
+  getProjectsElementsFromDataList,
+  getSkillsElementsFromDataList,
+}

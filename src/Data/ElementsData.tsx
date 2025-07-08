@@ -102,21 +102,84 @@ const offerList: ItemListTypeOffer[] = [
   },
 ]
 
-const elementsData = () => {
-  return { menuItemsDataNoId, offerList, btnListNoId }
+export type ItemListTypeProject = {
+  $id?: string
+  $img: string
+  $alt?: string
+  $title?: string
+  $text?: string
+  $viewLive?: string
+  $gitHubRepo?: string
 }
 
-// const renderList: (arr: ItemListTypeOffer[]) => ReactNode[] = (arr: ItemListTypeOffer[]): ReactNode[] => {
-//   return arr.map(({ $id, ...item }: ItemListTypeOffer): ReactNode => {
-//     return <Offer key={$id} {...item} />
-//   })
-// }
-//
-// const addIdToElem: (elements: ItemListTypeOffer[]) => ItemListTypeOffer[] = (elements) => {
-//   return elements.map((elem) => {
-//     const strId = getRndIdValue()
-//     return { ...elem, $id: strId }
-//   })
-// }
+const projectList: ItemListTypeProject[] = [
+  {
+    $img: './uber.jpeg',
+    $alt: 'uber',
+    $title: 'UBER',
+    $text: 'The website of the uber service where you can get acquainted with all the features of this company',
+    $viewLive: 'https://bavrepository.github.io/Projects/UberNew/src/',
+    $gitHubRepo: 'https://github.com/bavRepository/bavRepository.github.io/tree/main/Projects/UberNew/src',
+  },
+  {
+    $img: './fit.jpg',
+    $alt: 'fit',
+    $title: 'HEALTHY EATING',
+    $text: 'Healthy eating site that also has a calorie calculator',
+    $viewLive: 'https://bavrepository.github.io/Projects/Fit/src/',
+    $gitHubRepo: 'https://github.com/bavRepository/bavRepository.github.io/tree/main/Projects/Fit/src',
+  },
+  {
+    $img: './pulse.jpeg',
+    $alt: 'pulse',
+    $title: 'PULSOMETER',
+    $text: 'Website presentation and sale of products heart rate monitor',
+    $viewLive: 'https://bavrepository.github.io/Projects/PulsometerNew/src/',
+    $gitHubRepo: 'https://github.com/bavRepository/bavRepository.github.io/tree/main/Projects/PulsometerNew/src',
+  },
+]
+
+export type ItemListTypeSkill = {
+  $iconId: string
+  $width?: string
+  $height?: string
+  $viewBox?: string
+  $text?: string
+  $id?: string
+}
+const skillList: ItemListTypeSkill[] = [
+  {
+    $iconId: 'rulerPan',
+    $width: '42',
+    $height: '42',
+    $viewBox: '0 0 42 42',
+    $text: 'UI & UX\n' + 'DESIGNING',
+  },
+  {
+    $iconId: 'code',
+    $width: '52',
+    $height: '52',
+    $viewBox: '0 0 52 52',
+    $text: 'WEB\n' + 'DEVELOPMENT',
+  },
+  {
+    $iconId: 'android',
+    $width: '62',
+    $height: '62',
+    $viewBox: '0 0 62 62',
+    $text: 'MOBILE\n' + 'DEVELOPMENT',
+  },
+  {
+    $iconId: 'python',
+    $width: '55',
+    $height: '55',
+    $viewBox: '0 0 55 55',
+    $text: 'WEB SCRAPING\n' + 'WITH PYTHON',
+  },
+]
+
+const elementsData = () => {
+  return { menuItemsDataNoId, offerList, btnListNoId, projectList, skillList }
+}
 
 export { elementsData }

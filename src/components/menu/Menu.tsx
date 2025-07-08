@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { animationScaleIn, animationNeon, transformTranslateY } from '../animation/Animation.tsx'
 import { ButtonLink } from '../common/Button.ts'
 import { theme } from '../../styles/Theme.ts'
-import { getLinksElementsFromDataList } from '../../utils/ModifyElementsData.tsx'
+import { getLinksElementsFromDataList } from '../../Data/ModifyElementsData.tsx'
 import { elementsData } from '../../Data/ElementsData.tsx'
 
 export const Menu = () => {

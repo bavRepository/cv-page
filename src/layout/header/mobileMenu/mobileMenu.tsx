@@ -1,7 +1,7 @@
 import { theme } from '../../../styles/Theme.ts'
 import styled from 'styled-components'
 import { elementsData } from '../../../Data/ElementsData.tsx'
-import { getLinksElementsFromDataList } from '../../../utils/ModifyElementsData.tsx'
+import { getLinksElementsFromDataList } from '../../../Data/ModifyElementsData.tsx'
 import { animationNeon, animationScaleIn, transformTranslateY } from '../../../components/animation/Animation.tsx'
 import { ButtonLink } from '../../../components/common/Button.ts'
 import type { ReactNode } from 'react'

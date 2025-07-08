@@ -10,7 +10,7 @@ import type { ReactNode } from 'react'
 import { animationNeon, animationScaleIn, transformTranslateY } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { theme } from '../../../styles/Theme.ts'
-import { getLinksElementsFromDataList } from '../../../utils/ModifyElementsData.tsx'
+import { getLinksElementsFromDataList } from '../../../Data/ModifyElementsData.tsx'
 import { elementsData } from '../../../Data/ElementsData.tsx'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
