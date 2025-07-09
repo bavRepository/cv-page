@@ -45,7 +45,7 @@ export const Contacts = () => {
 }
 
 const SectionContacts = styled.section`
-  padding-top: 128px;
+  padding-top: 150px;
 `
 
 const ContactForm = styled.form`

@@ -148,7 +148,6 @@ const PromoSection = styled.section`
 
   @media ${theme.media.mobile} {
     min-height: 700px;
-
     ${SectionTitle} {
       font-size: 30px;
       line-height: 38px;

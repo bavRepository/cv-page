@@ -5,6 +5,8 @@ import { getLinksElementsFromDataList } from '../../../data/ModifyElementsData.t
 import { animationNeon, animationScaleIn, transformTranslateY } from '../../../components/animation/Animation.tsx'
 import { ButtonLink } from '../../../components/common/Button.ts'
 import type { ReactNode } from 'react'
+import { useSelector } from 'react-redux'
+import { selectHamburgerState } from '../../../redux/slices/hamburgerSlice.tsx'
 
 type Props = {
   $position?: string
@@ -12,11 +14,12 @@ type Props = {
 }
 
 export const MobileMenu = ({ $position, $left }: Props) => {
+  const activeHamburger = useSelector(selectHamburgerState)
   const { menuItemsDataNoId } = elementsData()
   const menuElementsHtml: ReactNode[] = getLinksElementsFromDataList(menuItemsDataNoId)
 
   return (
-    <MobileMenuPopup $position={$position} $left={$left}>
+    <MobileMenuPopup $position={$position} $left={$left} aria-hidden={activeHamburger}>
       <ul>{menuElementsHtml}</ul>
     </MobileMenuPopup>
   )

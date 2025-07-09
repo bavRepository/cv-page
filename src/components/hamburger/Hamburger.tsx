@@ -20,7 +20,7 @@ export const Hamburger = () => {
       </>
     )
   }
-  //aria-modal true nav
+
   return (
     <HamburgerWrapper aria-label={activeHamburger ? 'Open menu' : 'Close menu'} onClick={handleHamburgerClick}>
       {activeHamburger ? (
