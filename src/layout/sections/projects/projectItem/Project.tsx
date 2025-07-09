@@ -46,16 +46,17 @@ export const Project = ({ $text, $img, $alt, $title, $viewLive, $gitHubRepo }: I
 
 const Img = styled.img`
   width: 100%;
-  max-height: 173px;
+  height: 200px;
   object-fit: cover;
 `
 
-const ProjectWrapper = styled.div`
+const ProjectWrapper = styled.article`
   box-shadow: 4px 4px 14px 0 rgba(0, 0, 0, 0.25);
   background: #31313f;
   max-width: 343px;
   border-radius: 8px;
-  padding: 16px 16px 23px 16px;
+  //padding: 16px 16px 23px 16px;
+  padding: 20px 20px 23px 20px;
   flex-grow: 1;
   transition: all 0.3s;
   &:hover {

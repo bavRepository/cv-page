@@ -6,21 +6,21 @@ import { Hamburger } from '../../../components/hamburger/Hamburger.tsx'
 import { theme } from '../../../styles/Theme.ts'
 import { MobileMenu } from '../mobileMenu/mobileMenu.tsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectMedia768State, setMedia768State } from '../../../redux/slices/mediaQuerySlice.tsx'
+import { selectmediaTabletState, setMediaTabletState } from '../../../redux/slices/mediaQuerySlice.tsx'
 import { useEffect } from 'react'
 import { selectHamburgerState, setHamburgerState } from '../../../redux/slices/hamburgerSlice.tsx'
 
 export const HeaderMenu = () => {
   const dispatch = useDispatch()
-  const media768State = useSelector(selectMedia768State)
+  const mediaTabletState = useSelector(selectmediaTabletState)
   const hamburgerState = useSelector(selectHamburgerState)
   useEffect(() => {
     const mobileMediaQuery: MediaQueryList = window.matchMedia('(max-width: 768px)')
     function handleMobileChange(event: MediaQueryList | MediaQueryListEvent) {
       if (event.matches) {
-        dispatch(setMedia768State(true))
+        dispatch(setMediaTabletState(true))
       } else {
-        dispatch(setMedia768State(false))
+        dispatch(setMediaTabletState(false))
         dispatch(setHamburgerState(false))
       }
     }
@@ -36,7 +36,7 @@ export const HeaderMenu = () => {
       <Container>
         <NavBlockWrapper>
           <Logo />
-          {!media768State ? <Menu /> : <Hamburger />}
+          {!mediaTabletState ? <Menu /> : <Hamburger />}
         </NavBlockWrapper>
       </Container>
     </StyledHeader>
@@ -48,7 +48,7 @@ const NavBlockWrapper = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 20px 20px;
   gap: 30px;
   flex-wrap: wrap;
   @media ${theme.media.tabletLarge} {
@@ -61,12 +61,11 @@ const NavBlockWrapper = styled.div`
 `
 
 const StyledHeader = styled.header`
-  //height: 64px;
   position: fixed;
   width: 100%;
   left: 0;
   top: 0;
-  background: rgba(24, 24, 36, 0.8);
+  background: rgba(24, 24, 36, 0.9);
   z-index: 20;
   ${Container} {
     position: relative;

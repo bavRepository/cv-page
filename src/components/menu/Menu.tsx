@@ -3,8 +3,8 @@ import type { ReactNode } from 'react'
 import { animationScaleIn, animationNeon, transformTranslateY } from '../animation/Animation.tsx'
 import { ButtonLink } from '../common/Button.ts'
 import { theme } from '../../styles/Theme.ts'
-import { getLinksElementsFromDataList } from '../../Data/ModifyElementsData.tsx'
-import { elementsData } from '../../Data/ElementsData.tsx'
+import { getLinksElementsFromDataList } from '../../data/ModifyElementsData.tsx'
+import { elementsData } from '../../data/ElementsData.tsx'
 
 export const Menu = () => {
   const { menuItemsDataNoId } = elementsData()
@@ -12,7 +12,7 @@ export const Menu = () => {
 
   return (
     <StyledMenu>
-      <ul aria-label={'Скажи'} role={'menu'}>
+      <ul aria-label={'Navigation menu'} role={'menu'}>
         {menuElementsHtml}
       </ul>
     </StyledMenu>

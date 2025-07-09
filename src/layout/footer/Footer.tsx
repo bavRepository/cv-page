@@ -36,7 +36,7 @@ const MiddlePartWrapper = styled.div`
 `
 const StyledFooter = styled.section`
   background: ${theme.colors.mainBgColor};
-  padding: 200px 0 40px 0;
+  padding: 170px 0 40px 0;
   ${ButtonLink} {
     &:hover {
       color: ${theme.colors.mainColor};

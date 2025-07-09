@@ -10,41 +10,12 @@ import type { ReactNode } from 'react'
 import { animationNeon, animationScaleIn, transformTranslateY } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { theme } from '../../../styles/Theme.ts'
-import { getLinksElementsFromDataList } from '../../../Data/ModifyElementsData.tsx'
-import { elementsData } from '../../../Data/ElementsData.tsx'
+import { getLinksElementsFromDataList } from '../../../data/ModifyElementsData.tsx'
+import { elementsData } from '../../../data/ElementsData.tsx'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
 export const Promo = () => {
-  // const addIdToElem: (elements: ButtonItemRender[]) => ButtonItemRender[] = (elements) => {
-  //   return elements.map((elem) => {
-  //     const strId = getRndIdValue()
-  //     return { ...elem, $id: strId }
-  //   })
-  // }
-  //
-  // const renderItem: (arr: ButtonItemRender[]) => ReactNode[] = (arr: ButtonItemRender[]): ReactNode[] => {
-  //   return arr.map(({ $name, $id }: ButtonItemRender) => {
-  //     try {
-  //       if (!$name) {
-  //         throw new Error('$name has no length')
-  //       }
-  //       const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
-  //       return (
-  //         <ButtonLink key={$id}>
-  //           {symbolBeforeAnimatedSpan}
-  //           {animatedChar}
-  //           {symbolAfterAnimatedSpan}
-  //         </ButtonLink>
-  //       )
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   })
-  // }
-  //
-  // const btnListWithId: ButtonItemRender[] = addIdToElem(btnListNoId)
-  // const btnElementsHtml: ReactNode[] = renderItem(btnListWithId)
   const { btnListNoId } = elementsData()
   const linksHtml: ReactNode[] = getLinksElementsFromDataList(btnListNoId)
   return (

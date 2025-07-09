@@ -30,10 +30,8 @@ type ButtonAttrLink = {
   $draggable?: boolean
 }
 
-const Button = styled.button.attrs<ButtonAttr>(({ $draggable, $disabled, $value, $type, $name }) => ({
+const Button = styled.button.attrs<ButtonAttr>(({ $draggable, $disabled, $type }) => ({
   disabled: $disabled || false,
-  value: $value || '',
-  name: $name || '',
   type: $type || 'button',
   draggable: $draggable || false,
 }))<ButtonWrapperProps>`
@@ -49,10 +47,8 @@ const Button = styled.button.attrs<ButtonAttr>(({ $draggable, $disabled, $value,
   user-select: none;
 `
 
-const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $value, $name, $draggable }) => ({
+const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $draggable }) => ({
   href: $href || '#',
-  value: $value || '',
-  name: $name || '',
   draggable: $draggable || false,
 }))<ButtonWrapperProps>`
   width: ${(props) => props.$width || 'auto'};

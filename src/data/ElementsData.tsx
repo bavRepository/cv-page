@@ -3,20 +3,23 @@ type ButtonItemRender = {
   $name?: string
   $draggable?: boolean
   $textDecoration?: string
+  $href?: string
 }
 
 const btnListNoId: ButtonItemRender[] = [
   {
     $name: 'About me',
+    $href: '#aboutme',
   },
   {
     $name: 'Projects',
+    $href: '#projects',
   },
 ]
 
 type menuItemsDataNoIdType = {
   $id?: string
-  href?: string
+  $href?: string
   $color?: string
   $name: string
   draggable?: boolean
@@ -24,19 +27,19 @@ type menuItemsDataNoIdType = {
 }
 const menuItemsDataNoId: menuItemsDataNoIdType[] = [
   {
-    href: '',
+    $href: '#',
     $name: 'Home',
   },
   {
-    href: '',
+    $href: '#aboutme',
     $name: 'About me',
   },
   {
-    href: '',
+    $href: '#projects',
     $name: 'Projects',
   },
   {
-    href: '',
+    $href: '#contacts',
     $name: 'Contact',
   },
 ]

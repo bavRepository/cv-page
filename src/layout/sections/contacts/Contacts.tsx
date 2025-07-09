@@ -10,7 +10,7 @@ import { theme } from '../../../styles/Theme.ts'
 
 export const Contacts = () => {
   return (
-    <SectionContacts>
+    <SectionContacts id="contacts">
       <Container>
         <ContactsGridWrapper>
           <LeftContentWrapper>
@@ -86,6 +86,7 @@ const ContactForm = styled.form`
     }
     ${Text} {
       color: rgba(255, 255, 255, 0.8);
+      user-select: none;
     }
     ${ButtonLink} {
       display: block;

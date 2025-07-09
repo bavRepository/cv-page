@@ -3,8 +3,8 @@ import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import styled from 'styled-components'
 import { Container } from '../../../components/common/Container.ts'
 import { theme } from '../../../styles/Theme.ts'
-import { elementsData } from '../../../Data/ElementsData.tsx'
-import { getOffersElementsFromDataList } from '../../../Data/ModifyElementsData.tsx'
+import { elementsData } from '../../../data/ElementsData.tsx'
+import { getOffersElementsFromDataList } from '../../../data/ModifyElementsData.tsx'
 export const Offers = () => {
   const { offerList } = elementsData()
 

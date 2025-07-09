@@ -9,7 +9,7 @@ type ContainerWrapperProps = {
 export const Container = styled.div<ContainerWrapperProps>`
   margin: 0 auto;
   padding: 0 15px;
-  max-width: 1200px;
+  max-width: 1230px;
   width: 100%;
   min-height: 100%;
   //border: 1px solid red;

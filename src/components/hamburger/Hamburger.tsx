@@ -12,7 +12,7 @@ export const Hamburger = () => {
     dispatch(setHamburgerState())
   }
 
-  const openMenu = () => {
+  const viewActiveHamburger = () => {
     return (
       <>
         <Span $transform={'translateY(3px) rotate(-45deg)'} />
@@ -20,10 +20,11 @@ export const Hamburger = () => {
       </>
     )
   }
+  //aria-modal true nav
   return (
     <HamburgerWrapper aria-label={activeHamburger ? 'Open menu' : 'Close menu'} onClick={handleHamburgerClick}>
       {activeHamburger ? (
-        openMenu()
+        viewActiveHamburger()
       ) : (
         <>
           <Span />

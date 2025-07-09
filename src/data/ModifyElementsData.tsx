@@ -88,11 +88,11 @@ const getLinksElementsFromDataList: (elements: menuItemsDataNoIdType[] | ButtonI
         const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
         return (
           <li key={$id} role={'menuItem'}>
-            <ButtonLink {...elemDataObj}>
-              {symbolBeforeAnimatedSpan}
-              {animatedChar}
-              {symbolAfterAnimatedSpan}
-            </ButtonLink>
+            {/*<ButtonLink {...elemDataObj}>*/}
+            {/*  {symbolBeforeAnimatedSpan}*/}
+            {/*  {animatedChar}*/}
+            {/*  {symbolAfterAnimatedSpan}*/}
+            {/*</ButtonLink>*/}
           </li>
         )
       } catch (error) {

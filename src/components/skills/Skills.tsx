@@ -5,15 +5,15 @@ import { Text } from '../common/Text.ts'
 import { FlexWrapper } from '../common/FlexWrapper.ts'
 import { type ReactNode } from 'react'
 import { theme } from '../../styles/Theme.ts'
-import { elementsData } from '../../Data/ElementsData.tsx'
-import { getSkillsElementsFromDataList } from '../../Data/ModifyElementsData.tsx'
+import { elementsData } from '../../data/ElementsData.tsx'
+import { getSkillsElementsFromDataList } from '../../data/ModifyElementsData.tsx'
 
 export const Skills = () => {
   const { skillList } = elementsData()
   const skillElementsHtml: ReactNode[] = getSkillsElementsFromDataList(skillList)
 
   return (
-    <StyledSkills>
+    <StyledSkills id="aboutme">
       <Container>
         <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           About me:
@@ -65,7 +65,7 @@ const HeaderText = styled.h3`
 const StyledSkills = styled.section`
   min-height: 600px;
   background: ${theme.colors.mainBgColor};
-  padding: 85px 0 0 0;
+  padding: 95px 0 0 0;
   ${FlexWrapper} {
     margin-top: 30px;
   }

@@ -6,14 +6,14 @@ import type { ReactNode } from 'react'
 // import { Project } from './projectItem/Project.tsx'
 // import { getRndIdValue } from '../../../utils/MathWork.tsx'
 import { theme } from '../../../styles/Theme.ts'
-import { elementsData } from '../../../Data/ElementsData.tsx'
-import { getProjectsElementsFromDataList } from '../../../Data/ModifyElementsData.tsx'
+import { elementsData } from '../../../data/ElementsData.tsx'
+import { getProjectsElementsFromDataList } from '../../../data/ModifyElementsData.tsx'
 
 export const Projects = () => {
   const { projectList } = elementsData()
   const projectElementsHtml: ReactNode[] = getProjectsElementsFromDataList(projectList)
   return (
-    <SectionProjects>
+    <SectionProjects id="projects">
       <Container>
         <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           Featured projects:
@@ -38,22 +38,19 @@ const ProjectContentWrapper = styled.div`
   justify-content: space-between;
 `
 const SectionProjects = styled.section`
-  padding-top: 80px;
+  padding-top: 90px;
   min-height: 600px;
   ${Text} {
     margin-top: 16px;
   }
   @media ${theme.media.tabletLarge} {
+    ${SectionTitle}, ${Text} {
+      text-align: center;
+    }
     ${ProjectContentWrapper} {
       grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
       grid-template-rows: minmax(300px, auto);
       justify-content: space-evenly;
-      //flex-wrap: wrap;
-      //display: flex;
-      //justify-content: center;
-    }
-    ${SectionTitle}, ${Text} {
-      text-align: center;
     }
   }
 
