@@ -2,18 +2,19 @@ import styled from 'styled-components'
 import { SectionTitle } from '../../../components/common/SectionTitle.ts'
 import { Container } from '../../../components/common/Container.ts'
 import { Text } from '../../../components/common/Text'
-import type { ReactNode } from 'react'
-// import { Project } from './projectItem/Project.tsx'
-// import { getRndIdValue } from '../../../utils/MathWork.tsx'
+import React, { type ReactNode } from 'react'
+
 import { theme } from '../../../styles/Theme.ts'
 import { elementsData } from '../../../data/ElementsData.tsx'
-import { getProjectsElementsFromDataList } from '../../../data/ModifyElementsData.tsx'
+import { ModifyElementsData } from '../../../data/ModifyElementsData.tsx'
+import { JackInTheBox } from 'react-awesome-reveal'
 
-export const Projects = () => {
+export const Projects: React.FC = () => {
+  const modifyOfferElementsData = ModifyElementsData()
   const { projectList } = elementsData()
-  const projectElementsHtml: ReactNode[] = getProjectsElementsFromDataList(projectList)
+  const projectElementsHtml: ReactNode[] = modifyOfferElementsData.getProjectsElementsFromDataList(projectList)
   return (
-    <SectionProjects id="projects">
+    <SectionProjects id="projectsSection">
       <Container>
         <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           Featured projects:
@@ -22,7 +23,9 @@ export const Projects = () => {
           I have worked on many projects over the course of being a Web Developer, here are a few of my live, real-world
           projects
         </Text>
-        <ProjectContentWrapper>{projectElementsHtml}</ProjectContentWrapper>
+        <ProjectContentWrapper>
+          <JackInTheBox damping={0.2}>{projectElementsHtml}</JackInTheBox>
+        </ProjectContentWrapper>
       </Container>
     </SectionProjects>
   )
@@ -38,6 +41,7 @@ const ProjectContentWrapper = styled.div`
   justify-content: space-between;
 `
 const SectionProjects = styled.section`
+  position: relative;
   padding-top: 90px;
   min-height: 600px;
   ${Text} {

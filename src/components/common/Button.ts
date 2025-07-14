@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-scroll'
 
 type ButtonWrapperProps = {
   $fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 900
@@ -23,7 +24,6 @@ type ButtonAttr = {
 }
 
 type ButtonAttrLink = {
-  $href?: string
   $type?: 'button' | 'submit' | 'reset'
   $name?: string
   $value?: string
@@ -45,10 +45,10 @@ const Button = styled.button.attrs<ButtonAttr>(({ $draggable, $disabled, $type }
   color: ${(props) => props.$color || '#fff'};
   background: ${(props) => props.$background || 'transparent'};
   user-select: none;
+  cursor: pointer;
 `
 
-const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $draggable }) => ({
-  href: $href || '#',
+const ButtonLink = styled(Link).attrs<ButtonAttrLink>(({ $draggable }) => ({
   draggable: $draggable || false,
 }))<ButtonWrapperProps>`
   width: ${(props) => props.$width || 'auto'};
@@ -65,6 +65,7 @@ const ButtonLink = styled.a.attrs<ButtonAttrLink>(({ $href, $draggable }) => ({
   &:hover {
     color: ${(props) => props.$color || '${theme.colors.mainColor}'};
   }
+  cursor: pointer;
 `
 
 export { Button, ButtonLink }

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { theme } from '../../styles/Theme.ts'
 import { selectHamburgerState, setHamburgerState } from '../../redux/slices/hamburgerSlice.tsx'
@@ -12,62 +12,67 @@ export const Hamburger = () => {
     dispatch(setHamburgerState())
   }
 
-  const viewActiveHamburger = () => {
-    return (
-      <>
-        <Span $transform={'translateY(3px) rotate(-45deg)'} />
-        <Span $transform={'translateY(3px) rotate(45deg)'} />
-      </>
-    )
-  }
-
   return (
-    <HamburgerWrapper aria-label={activeHamburger ? 'Open menu' : 'Close menu'} onClick={handleHamburgerClick}>
-      {activeHamburger ? (
-        viewActiveHamburger()
-      ) : (
-        <>
-          <Span />
-          <Span />
-          <Span />
-        </>
-      )}
-    </HamburgerWrapper>
+    <BurgerBtn
+      aria-label={activeHamburger ? 'Open menu' : 'Close menu'}
+      onClick={handleHamburgerClick}
+      $isOpen={activeHamburger}
+    >
+      <span />
+    </BurgerBtn>
   )
 }
 
-export const HamburgerWrapper = styled.div`
+export const BurgerBtn = styled.button<{ $isOpen: boolean }>`
   display: block;
-  cursor: pointer;
   height: 30px;
   width: 30px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px;
-  padding-top: 8px;
-  @media ${theme.media.tablet} {
-    right: 10%;
-  }
-`
+  right: 10%;
 
-const Span = styled.span<{ $transform?: string }>`
-  display: block;
-  height: 2px;
-  width: 30px;
-  transition: all 0.25s;
-  background-color: #fff;
-  margin-top: 4px;
-  &:nth-child(1) {
-    margin-top: 0;
-    transform: ${(props) => props.$transform || 'none'};
-    margin-bottom: ${(props) => (props.$transform ? '-5px' : '0')};
-  }
-  &:nth-child(2) {
-    transform: ${(props) => props.$transform || 'none'};
-  }
-  &:nth-child(3) {
-    transform: ${(props) => props.$transform || 'none'};
-    margin-bottom: ${(props) => (props.$transform ? '-5px' : '0')};
+  span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.9);
+    ${(props) =>
+      props.$isOpen &&
+      css<{ $isOpen: boolean }>`
+        background-color: rgba(255, 255, 255, 0);
+      `}
+
+    &::before {
+      content: '';
+      transition: all 0.5s ease-out;
+      display: block;
+      width: 30px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-6px);
+      ${(props) =>
+        props.isOpen &&
+        css<{ isOpen: boolean }>`
+          transform: translateY(0) rotate(-45deg);
+          margin-bottom: -2px;
+        `}
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      transition: all 0.5s ease-out;
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(4px);
+      ${(props) =>
+        props.isOpen &&
+        css<{ isOpen: boolean }>`
+          transform: translateY(0) rotate(45deg);
+          margin-bottom: -1px;
+        `}
+    }
   }
 `

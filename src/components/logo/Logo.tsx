@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 import logoImg from '../../assets/images/logo.png'
 import { animationScaleInSkew } from '../animation/Animation.tsx'
+import { Link, animateScroll as scroll } from 'react-scroll'
 
 export const Logo = () => {
   return (
-    <LogoLink href="#" draggable={false}>
+    <LogoLink onClick={() => scroll.scrollToTop()}>
       <img src={logoImg} alt="logo" draggable={false} />
     </LogoLink>
   )
 }
-const LogoLink = styled.a.attrs(({ draggable }) => ({
+const LogoLink = styled(Link).attrs(({ draggable }) => ({
   draggable: draggable || 'false',
 }))`
   display: block;

@@ -7,10 +7,33 @@ import { Container } from '../../../components/common/Container.ts'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { animationScaleIn } from '../../../components/animation/Animation.tsx'
 import { theme } from '../../../styles/Theme.ts'
+import emailjs from '@emailjs/browser'
+import { type ElementRef, useRef } from 'react'
+export const Contacts: React.FC = () => {
+  const form = useRef<ElementRef<'form'>>(null)
 
-export const Contacts = () => {
+  const sendEmail = (e) => {
+    e.preventDefault()
+
+    if (!form.current) return
+
+    emailjs
+      .sendForm('service_49auzkd', 'template_72c5sxr', form.current, {
+        publicKey: 'uuaqlJ0Pi5l6FXRGN',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!')
+          e.target.reset()
+        },
+        (error) => {
+          console.log('FAILED...', error.text)
+        },
+      )
+  }
+
   return (
-    <SectionContacts id="contacts">
+    <SectionContacts id="contactsSection">
       <Container>
         <ContactsGridWrapper>
           <LeftContentWrapper>
@@ -24,13 +47,16 @@ export const Contacts = () => {
             <SectionTitle $fontWeight={500} $fontSize={'24px'} $color={'#fff'} $textAlign={'left'} $lineHeight={'40px'}>
               Contact me, let’s make magic together
             </SectionTitle>
-            <ContactForm>
-              <input type="text" placeholder={'Name:'} name={'name'} />
-              <input type="email" placeholder={'Email:'} name={'email'} />
-              <textarea placeholder={'Message:'} name={'message'} />
+            <ContactForm ref={form} onSubmit={sendEmail}>
+              <input required type="text" placeholder={'Name:'} name={'name'} />
+              <input required type="email" placeholder={'Email:'} name={'email'} />
+              <input required type="text" placeholder={'Subject:'} name={'subject'} />
+              <textarea required placeholder={'Message:'} name={'message'} />
               <FlexWrapper $justify={'flex-end'} $wrap={'wrap'}>
-                <input type="checkbox" />
-                <Text>&nbsp; I have read and agree to the&nbsp;</Text>
+                <input type="checkbox" id={'agreement'} />
+                <Text>
+                  <label htmlFor={'agreement'}> &nbsp; I have read and agree to the&nbsp;</label>
+                </Text>
                 <ButtonLink>Privacy Policy</ButtonLink>
               </FlexWrapper>
               <Button $type={'submit'} $width={'140px'} $height={'44px'} $fontSize={'16px'} $fontWeight={500}>
@@ -45,6 +71,7 @@ export const Contacts = () => {
 }
 
 const SectionContacts = styled.section`
+  position: relative;
   padding-top: 150px;
 `
 

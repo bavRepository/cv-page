@@ -10,9 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
-    html {
-        scroll-behavior: smooth;
-    }
+
     @font-face {
         font-family: 'Poppins';
         src: url('../assets/fonts/Poppins-Medium.woff') format('woff');
@@ -49,5 +47,14 @@ button  {
 
 section:not(:nth-of-type(2)){
     background-color: ${theme.colors.mainBgColor};
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    :before,
+    *:after {
+        animation: none;
+        transition: none;
+    }
 }
 `

@@ -1,19 +1,20 @@
 import styled from 'styled-components'
-import { SectionTitle } from '../common/SectionTitle.ts'
-import { Container } from '../common/Container.ts'
-import { Text } from '../common/Text.ts'
-import { FlexWrapper } from '../common/FlexWrapper.ts'
+import { SectionTitle } from '../../../components/common/SectionTitle.ts'
+import { Container } from '../../../components/common/Container.ts'
+import { Text } from '../../../components/common/Text.ts'
+import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { type ReactNode } from 'react'
-import { theme } from '../../styles/Theme.ts'
-import { elementsData } from '../../data/ElementsData.tsx'
-import { getSkillsElementsFromDataList } from '../../data/ModifyElementsData.tsx'
-
+import { theme } from '../../../styles/Theme.ts'
+import { elementsData } from '../../../data/ElementsData.tsx'
+import { ModifyElementsData } from '../../../data/ModifyElementsData.tsx'
+import { Fade, Slide } from 'react-awesome-reveal'
 export const Skills = () => {
   const { skillList } = elementsData()
-  const skillElementsHtml: ReactNode[] = getSkillsElementsFromDataList(skillList)
+  const modifyOfferElementsData = ModifyElementsData()
+  const skillElementsHtml: ReactNode[] = modifyOfferElementsData.getSkillsElementsFromDataList(skillList)
 
   return (
-    <StyledSkills id="aboutme">
+    <StyledSkills id="aboutmeSection">
       <Container>
         <SectionTitle $fontSize={'32px'} $color={`${theme.colors.mainColor}`} $textAlign={'left'}>
           About me:
@@ -34,7 +35,9 @@ export const Skills = () => {
           </ExperienceTextWrapper>
         </DescriptionWrapper>
         <FlexWrapper $wrap={'wrap'} $gap={'17px'} $justify={'space-between'}>
-          {skillElementsHtml}
+          <Fade damping={0.15} cascade={true} direction={'down'}>
+            {skillElementsHtml}
+          </Fade>
         </FlexWrapper>
       </Container>
     </StyledSkills>
@@ -63,11 +66,12 @@ const HeaderText = styled.h3`
   line-height: 33px;
 `
 const StyledSkills = styled.section`
+  position: relative;
   min-height: 600px;
   background: ${theme.colors.mainBgColor};
   padding: 95px 0 0 0;
   ${FlexWrapper} {
-    margin-top: 30px;
+    margin-top: 50px;
   }
   @media ${theme.media.tabletLarge} {
     ${DescriptionWrapper} {

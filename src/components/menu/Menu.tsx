@@ -3,12 +3,13 @@ import type { ReactNode } from 'react'
 import { animationScaleIn, animationNeon, transformTranslateY } from '../animation/Animation.tsx'
 import { ButtonLink } from '../common/Button.ts'
 import { theme } from '../../styles/Theme.ts'
-import { getLinksElementsFromDataList } from '../../data/ModifyElementsData.tsx'
+import { ModifyElementsData } from '../../data/ModifyElementsData.tsx'
 import { elementsData } from '../../data/ElementsData.tsx'
 
 export const Menu = () => {
+  const modifyOfferElementsData = ModifyElementsData()
   const { menuItemsDataNoId } = elementsData()
-  const menuElementsHtml: ReactNode[] = getLinksElementsFromDataList(menuItemsDataNoId)
+  const menuElementsHtml: ReactNode[] = modifyOfferElementsData.getLinksElementsFromDataList(menuItemsDataNoId)
 
   return (
     <StyledMenu>
@@ -30,7 +31,7 @@ const StyledMenu = styled.nav`
     justify-content: flex-start;
     li {
       border-radius: 2rem;
-      transition: all 0.2s;
+      transition: all 0.2s ease-in-out;
       box-shadow:
         2px 2px 26px rgba(255, 255, 255, 0.2),
         -2px -2px 26px rgba(255, 255, 255, 0.2);
@@ -59,7 +60,8 @@ const StyledMenu = styled.nav`
     ${animationNeon};
     outline: 8px ridge rgba(170, 50, 220, 0.6);
     border-radius: 2rem;
-    &:hover {
+    &:hover,
+    &.active {
       text-shadow: none;
       ${animationScaleIn};
       color: ${theme.colors.mainColor};

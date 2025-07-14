@@ -35,6 +35,7 @@ const MiddlePartWrapper = styled.div`
   }
 `
 const StyledFooter = styled.section`
+  position: relative;
   background: ${theme.colors.mainBgColor};
   padding: 170px 0 40px 0;
   ${ButtonLink} {

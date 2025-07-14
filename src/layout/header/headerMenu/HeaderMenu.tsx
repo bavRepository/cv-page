@@ -4,13 +4,13 @@ import { Menu } from '../../../components/menu/Menu.tsx'
 import { Container } from '../../../components/common/Container.ts'
 import { Hamburger } from '../../../components/hamburger/Hamburger.tsx'
 import { theme } from '../../../styles/Theme.ts'
-import { MobileMenu } from '../mobileMenu/mobileMenu.tsx'
+import { MobileMenu } from '../mobileMenu/MobileMenu.tsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectmediaTabletState, setMediaTabletState } from '../../../redux/slices/mediaQuerySlice.tsx'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { selectHamburgerState, setHamburgerState } from '../../../redux/slices/hamburgerSlice.tsx'
 
-export const HeaderMenu = () => {
+export const HeaderMenu: React.FC = () => {
   const dispatch = useDispatch()
   const mediaTabletState = useSelector(selectmediaTabletState)
   const hamburgerState = useSelector(selectHamburgerState)
@@ -30,9 +30,10 @@ export const HeaderMenu = () => {
       mobileMediaQuery.removeEventListener('change', handleMobileChange)
     }
   }, [dispatch])
+
   return (
     <StyledHeader>
-      {hamburgerState ? <MobileMenu $position={'fixed'} $left={'0'} /> : <MobileMenu />}
+      <MobileMenu isOpen={hamburgerState} />
       <Container>
         <NavBlockWrapper>
           <Logo />

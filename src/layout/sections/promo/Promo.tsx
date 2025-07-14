@@ -4,28 +4,42 @@ import bgImg from '../../../assets/images/bg-main.jpg'
 import { Social } from '../../../components/social/Social.tsx'
 import { SectionTitle } from '../../../components/common/SectionTitle.ts'
 import { Text } from '../../../components/common/Text.ts'
-import { ButtonLink } from '../../../components/common/Button.ts'
+import { Button, ButtonLink } from '../../../components/common/Button.ts'
 import approvedImg from '../../../assets/images/approved.png'
 import type { ReactNode } from 'react'
 import { animationNeon, animationScaleIn, transformTranslateY } from '../../../components/animation/Animation.tsx'
 import { FlexWrapper } from '../../../components/common/FlexWrapper.ts'
 import { theme } from '../../../styles/Theme.ts'
-import { getLinksElementsFromDataList } from '../../../data/ModifyElementsData.tsx'
+import { ModifyElementsData } from '../../../data/ModifyElementsData.tsx'
 import { elementsData } from '../../../data/ElementsData.tsx'
+import Typewriter from 'typewriter-effect'
+import Tilt from 'react-parallax-tilt'
 
 const textShadow = '0 -40px 100px,0 0 2px,0 0 1em #bfe2ff,0 0 0.5em #bfe2ff,0 0 0.1em #bfe2ff;'
 
 export const Promo = () => {
+  const modifyOfferElementsData = ModifyElementsData()
   const { btnListNoId } = elementsData()
-  const linksHtml: ReactNode[] = getLinksElementsFromDataList(btnListNoId)
+  const linksHtml: ReactNode[] = modifyOfferElementsData.getLinksElementsFromDataList(btnListNoId)
   return (
-    <PromoSection>
+    <PromoSection id="homeSection">
       <Container>
         <ApproveImg draggable={false} src={approvedImg} alt="approved" />
         <ContentWrapper>
           <SectionTitle>Hello, i’m</SectionTitle>
           <Title>Anton Barai</Title>
-          <Text>Freelance UI designer and front-end developer. I create seamless web experiences for end-users.</Text>
+
+          <SectionTitle $textAlign={'right'} $fontSize={'24px'}>
+            <p>Freelance UI designer, Front-End Developer</p>
+            <Typewriter
+              options={{
+                strings: ['Freelance UI designer', 'Front-End Developer'],
+                autoStart: true,
+                loop: true,
+                delay: 150,
+              }}
+            />
+          </SectionTitle>
           <Social justify={'center'} />
           <ButtonLinkWrapper>{linksHtml}</ButtonLinkWrapper>
         </ContentWrapper>
@@ -49,6 +63,13 @@ const ContentWrapper = styled.div`
 
   ${FlexWrapper} {
     margin-top: 30px;
+  }
+  ${SectionTitle} {
+    transform: rotateZ(-2deg);
+    margin-top: 15px;
+  }
+  p {
+    display: none;
   }
 `
 
@@ -106,7 +127,6 @@ const ApproveImg = styled.img`
   user-select: none;
 `
 const PromoSection = styled.section`
-  position: relative;
   display: block;
   min-height: 800px;
   background: url(${bgImg}) center center / cover no-repeat;
