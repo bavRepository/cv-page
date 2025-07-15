@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components'
 
-import { theme } from '../../styles/Theme.ts'
 import { selectHamburgerState, setHamburgerState } from '../../redux/slices/hamburgerSlice.tsx'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -51,9 +50,9 @@ export const BurgerBtn = styled.button<{ $isOpen: boolean }>`
       height: 2px;
       background-color: rgba(255, 255, 255, 0.9);
       transform: translateY(-6px);
-      ${(props) =>
-        props.isOpen &&
-        css<{ isOpen: boolean }>`
+      ${(props: { $isOpen: boolean }) =>
+        props.$isOpen &&
+        css<{ $isOpen: boolean }>`
           transform: translateY(0) rotate(-45deg);
           margin-bottom: -2px;
         `}
@@ -67,9 +66,9 @@ export const BurgerBtn = styled.button<{ $isOpen: boolean }>`
       transition: all 0.5s ease-out;
       background-color: rgba(255, 255, 255, 0.9);
       transform: translateY(4px);
-      ${(props) =>
-        props.isOpen &&
-        css<{ isOpen: boolean }>`
+      ${(props: { $isOpen: boolean }) =>
+        props.$isOpen &&
+        css<{ $isOpen: boolean }>`
           transform: translateY(0) rotate(45deg);
           margin-bottom: -1px;
         `}

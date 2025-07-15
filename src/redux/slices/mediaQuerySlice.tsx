@@ -1,6 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
-const initialState = {
+type initialStateType = {
+  mediaTablet: boolean
+}
+
+const initialState: initialStateType = {
   mediaTablet: false,
 }
 
@@ -8,12 +12,13 @@ const mediaSlice = createSlice({
   name: 'media',
   initialState,
   reducers: {
-    setMediaTabletState: (state, action) => {
+    setMediaTabletState: (state: initialStateType, action: PayloadAction<boolean>) => {
       state.mediaTablet = action.payload
     },
   },
 })
 export const { setMediaTabletState } = mediaSlice.actions
-export const selectmediaTabletState = (state) => state.media.mediaTablet
+
+export const selectmediaTabletState = (state: { media: initialStateType }) => state.media.mediaTablet
 
 export default mediaSlice.reducer
