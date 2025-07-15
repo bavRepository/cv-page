@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { ButtonLink } from '../../../../components/common/Button.ts'
 import { SectionTitle } from '../../../../components/common/SectionTitle.ts'
 import { Text } from '../../../../components/common/Text'
 import { FlexWrapper } from '../../../../components/common/FlexWrapper.ts'
@@ -33,12 +32,12 @@ export const Project = ({ $text, $img, $alt, $title, $viewLive, $gitHubRepo }: I
         {$text}
       </Text>
       <FlexWrapper $justify={'center'} $align={'center'} $gap={'12px'}>
-        <ButtonLink target="_blank" $width={'135px'} $height={'38px'} $href={$viewLive} $fontSize={'16px'}>
+        <Link target="_blank" href={$viewLive}>
           View live
-        </ButtonLink>
-        <ButtonLink target="_blank" $width={'135px'} $height={'38px'} $href={$gitHubRepo} $fontSize={'16px'}>
+        </Link>
+        <Link target="_blank" href={$gitHubRepo}>
           GitHub Repo
-        </ButtonLink>
+        </Link>
       </FlexWrapper>
     </ProjectWrapper>
   )
@@ -49,6 +48,7 @@ const Img = styled.img`
   height: 200px;
   object-fit: cover;
 `
+const Link = styled.a``
 
 const ProjectWrapper = styled.article`
   box-shadow: 4px 4px 14px 0 rgba(0, 0, 0, 0.25);
@@ -72,7 +72,10 @@ const ProjectWrapper = styled.article`
   }
   ${FlexWrapper} {
     margin-top: 24px;
-    ${ButtonLink} {
+    ${Link} {
+      font-size: 16px;
+      height: 38px;
+      width: 135px;
       border-radius: 8px;
       display: flex;
       align-items: center;

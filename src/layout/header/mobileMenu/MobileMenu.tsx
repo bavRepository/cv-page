@@ -27,7 +27,7 @@ export const MobileMenu: React.FC<MyComponentProps> = ({ isOpen }) => {
   )
 }
 
-const MobileMenuPopup = styled.nav<{ $isOpen?: boolean }>`
+const MobileMenuPopup = styled.nav<{ $isOpen: boolean }>`
   ul {
     width: 220px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -44,12 +44,13 @@ const MobileMenuPopup = styled.nav<{ $isOpen?: boolean }>`
     z-index: 555;
     top: 0;
     left: -100%;
-    ${({ $isOpen }) =>
-      $isOpen &&
-      css<{ isOpen: boolean }>`
+    ${(props: { $isOpen: boolean }) =>
+      props.$isOpen &&
+      css<{ $isOpen: boolean }>`
         position: fixed;
         left: 0;
       `}
+
     li {
       border-radius: 2rem;
       transition: all 0.2s ease-in-out;

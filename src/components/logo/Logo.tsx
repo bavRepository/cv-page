@@ -2,14 +2,18 @@ import styled from 'styled-components'
 import logoImg from '../../assets/images/logo.png'
 import { animationScaleInSkew } from '../animation/Animation.tsx'
 import { Link, animateScroll as scroll } from 'react-scroll'
+import type { FC } from 'react'
 
-export const Logo = () => {
+export const Logo: FC = () => {
   return (
-    <LogoLink onClick={() => scroll.scrollToTop()}>
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    <LogoLink onClick={(): void => scroll.scrollToTop()} draggable={'false'}>
       <img src={logoImg} alt="logo" draggable={false} />
     </LogoLink>
   )
 }
+
 const LogoLink = styled(Link).attrs(({ draggable }) => ({
   draggable: draggable || 'false',
 }))`

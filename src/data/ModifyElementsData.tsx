@@ -93,7 +93,8 @@ export const ModifyElementsData = () => {
             throw new Error('$name has no length')
           }
           const { symbolBeforeAnimatedSpan, animatedChar, symbolAfterAnimatedSpan } = getAnimatedSpan($name, 1, 7)
-          const onClickLinkHandle = (toElem, elem) => {
+
+          const onClickLinkHandle = () => {
             Events.scrollEvent.register('begin', function () {
               dispatch(setHamburgerState(false))
             })
@@ -105,6 +106,8 @@ export const ModifyElementsData = () => {
                 smooth={true}
                 activeClass={'active'}
                 spy={true}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
                 onClick={(e) => onClickLinkHandle(`${$link}Section`, e.currentTarget)}
                 {...elemDataObj}
               >
@@ -131,7 +134,8 @@ export const ModifyElementsData = () => {
       })
     }
     const offerItemsDataWithId = addIdToElem(offerList)
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     return renderList(offerItemsDataWithId)
   }
 
@@ -143,7 +147,8 @@ export const ModifyElementsData = () => {
     }
 
     const peojectItemsDataWithId = addIdToElem(projectList)
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     return renderList(peojectItemsDataWithId)
   }
 
@@ -154,7 +159,8 @@ export const ModifyElementsData = () => {
       })
     }
     const skillsItemsDataWithId = addIdToElem(skillsList)
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     return renderList(skillsItemsDataWithId)
   }
   return {

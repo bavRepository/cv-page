@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../icon/Icon.tsx'
 import { animateScroll as scroll } from 'react-scroll'
 import { animationScaleIn } from '../animation/Animation.tsx'
+import { useEffect, useState } from 'react'
 
 export const GoTopBtn = () => {
   const [showBtn, setShowBtn] = useState(false)
   useEffect(() => {
-    const goScrollingTop = (e) => {
+    const goScrollingTop = () => {
       if (window.scrollY > 200) {
         setShowBtn(true)
       } else {

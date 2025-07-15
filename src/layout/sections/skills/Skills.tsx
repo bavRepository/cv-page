@@ -7,7 +7,7 @@ import { type ReactNode } from 'react'
 import { theme } from '../../../styles/Theme.ts'
 import { elementsData } from '../../../data/ElementsData.tsx'
 import { ModifyElementsData } from '../../../data/ModifyElementsData.tsx'
-import { Fade, Slide } from 'react-awesome-reveal'
+import { Fade } from 'react-awesome-reveal'
 export const Skills = () => {
   const { skillList } = elementsData()
   const modifyOfferElementsData = ModifyElementsData()

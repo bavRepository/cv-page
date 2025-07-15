@@ -1,26 +1,15 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
-import type { Container, Engine } from '@tsparticles/engine'
-// import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-import { loadFull } from 'tsparticles' // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from '@tsparticles/slim' // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
+import { loadFull } from 'tsparticles'
 
 export const Particle = () => {
-  const [init, setInit] = useState(false)
-
-  // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      //await loadAll(engine);
       await loadFull(engine)
-      // await loadSlim(engine);
-      //await loadBasic(engine);
-    }).then(() => {
-      setInit(true)
-    })
+    }).then(() => {})
   }, [])
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   const particlesLoaded = (container) => {
     console.log(container)
   }
@@ -28,6 +17,8 @@ export const Particle = () => {
   return (
     <Particles
       id="tsparticles"
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       particlesLoaded={particlesLoaded}
       options={{
         fpsLimit: 120,
@@ -37,6 +28,8 @@ export const Particle = () => {
               enable: true,
               mode: 'repulse',
             },
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             resize: true,
           },
           modes: {
@@ -73,6 +66,8 @@ export const Particle = () => {
           number: {
             density: {
               enable: true,
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
               area: 1000,
             },
             value: 60,

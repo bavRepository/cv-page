@@ -11,7 +11,8 @@ import emailjs from '@emailjs/browser'
 import { type ElementRef, useRef } from 'react'
 export const Contacts: React.FC = () => {
   const form = useRef<ElementRef<'form'>>(null)
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   const sendEmail = (e) => {
     e.preventDefault()
 
@@ -57,6 +58,8 @@ export const Contacts: React.FC = () => {
                 <Text>
                   <label htmlFor={'agreement'}> &nbsp; I have read and agree to the&nbsp;</label>
                 </Text>
+                {/*eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+                {/*@ts-expect-error*/}
                 <ButtonLink>Privacy Policy</ButtonLink>
               </FlexWrapper>
               <Button $type={'submit'} $width={'140px'} $height={'44px'} $fontSize={'16px'} $fontWeight={500}>
