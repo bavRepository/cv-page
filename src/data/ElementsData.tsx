@@ -9,11 +9,11 @@ type ButtonItemRender = {
 const btnListNoId: ButtonItemRender[] = [
   {
     $name: 'About me',
-    $link: 'AboutMe',
+    $link: 'aboutme',
   },
   {
     $name: 'Projects',
-    $link: 'Projects',
+    $link: 'projects',
   },
 ]
 
