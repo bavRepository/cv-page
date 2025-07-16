@@ -48,7 +48,9 @@ const Img = styled.img`
   height: 200px;
   object-fit: cover;
 `
-const Link = styled.a``
+const Link = styled.a`
+  color: #fff;
+`
 
 const ProjectWrapper = styled.article`
   box-shadow: 4px 4px 14px 0 rgba(0, 0, 0, 0.25);

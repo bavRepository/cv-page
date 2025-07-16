@@ -75,7 +75,7 @@ export const Contacts: React.FC = () => {
 
 const SectionContacts = styled.section`
   position: relative;
-  padding-top: 150px;
+  padding-top: 200px;
 `
 
 const ContactForm = styled.form`

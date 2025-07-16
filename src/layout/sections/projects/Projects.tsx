@@ -7,7 +7,7 @@ import React, { type ReactNode } from 'react'
 import { theme } from '../../../styles/Theme.ts'
 import { elementsData } from '../../../data/ElementsData.tsx'
 import { ModifyElementsData } from '../../../data/ModifyElementsData.tsx'
-import { JackInTheBox } from 'react-awesome-reveal'
+import { Roll } from 'react-awesome-reveal'
 
 export const Projects: React.FC = () => {
   const modifyOfferElementsData = ModifyElementsData()
@@ -24,7 +24,9 @@ export const Projects: React.FC = () => {
           projects
         </Text>
         <ProjectContentWrapper>
-          <JackInTheBox damping={0.2}>{projectElementsHtml}</JackInTheBox>
+          <Roll cascade={true} damping={0.3}>
+            {projectElementsHtml}
+          </Roll>
         </ProjectContentWrapper>
       </Container>
     </SectionProjects>

@@ -7,7 +7,7 @@ import { type ReactNode } from 'react'
 import { theme } from '../../../styles/Theme.ts'
 import { elementsData } from '../../../data/ElementsData.tsx'
 import { ModifyElementsData } from '../../../data/ModifyElementsData.tsx'
-import { Fade } from 'react-awesome-reveal'
+import { Bounce } from 'react-awesome-reveal'
 export const Skills = () => {
   const { skillList } = elementsData()
   const modifyOfferElementsData = ModifyElementsData()
@@ -35,9 +35,9 @@ export const Skills = () => {
           </ExperienceTextWrapper>
         </DescriptionWrapper>
         <FlexWrapper $wrap={'wrap'} $gap={'17px'} $justify={'space-between'}>
-          <Fade damping={0.15} cascade={true} direction={'down'}>
+          <Bounce damping={0.35} cascade={true}>
             {skillElementsHtml}
-          </Fade>
+          </Bounce>
         </FlexWrapper>
       </Container>
     </StyledSkills>

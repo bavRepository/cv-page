@@ -4,16 +4,14 @@ import { Menu } from '../../../components/menu/Menu.tsx'
 import { Container } from '../../../components/common/Container.ts'
 import { Hamburger } from '../../../components/hamburger/Hamburger.tsx'
 import { theme } from '../../../styles/Theme.ts'
-import { MobileMenu } from '../mobileMenu/MobileMenu.tsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectmediaTabletState, setMediaTabletState } from '../../../redux/slices/mediaQuerySlice.tsx'
 import React, { useEffect } from 'react'
-import { selectHamburgerState, setHamburgerState } from '../../../redux/slices/hamburgerSlice.tsx'
+import { setHamburgerState } from '../../../redux/slices/hamburgerSlice.tsx'
 
 export const HeaderMenu: React.FC = () => {
   const dispatch = useDispatch()
   const mediaTabletState = useSelector(selectmediaTabletState)
-  const hamburgerState = useSelector(selectHamburgerState)
   useEffect(() => {
     const mobileMediaQuery: MediaQueryList = window.matchMedia('(max-width: 768px)')
     function handleMobileChange(event: MediaQueryList | MediaQueryListEvent) {
@@ -33,11 +31,11 @@ export const HeaderMenu: React.FC = () => {
 
   return (
     <StyledHeader>
-      <MobileMenu isOpen={hamburgerState} />
       <Container>
         <NavBlockWrapper>
           <Logo />
-          {!mediaTabletState ? <Menu /> : <Hamburger />}
+          {mediaTabletState && <Hamburger />}
+          <Menu />
         </NavBlockWrapper>
       </Container>
     </StyledHeader>
